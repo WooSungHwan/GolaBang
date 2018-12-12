@@ -13,7 +13,7 @@
 				<a class="mdl-navigation__link" href="" style="color: black; font-size: 1.2em; font-weight: bold;">관심목록</a> 
 				<a class="mdl-navigation__link" href="" style="color: black; font-size: 1.2em; font-weight: bold;">방내놓기</a> 
 				<a class="mdl-navigation__link" href="" style="color: black; font-size: 1.2em; font-weight: bold;">알림</a>
-				<a class="mdl-navigation__link" href="" style="color: #a9a9a9;"><span id="joinlogin">회원가입·로그인</span></a>
+				<a class="mdl-navigation__link" style="color: #a9a9a9;"><span id="joinlogin">회원가입·로그인</span></a>
 			</nav>
 		</div>
 	</header>

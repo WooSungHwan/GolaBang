@@ -12,9 +12,10 @@ i{
  color: black;
 }
 
-#joinlogin:hover {
+a:hover #joinlogin {
 	color: #FF9800;
 	font-weight: bold;
+	cursor:pointer;
 }
 
 .demo-layout-transparent .mdl-layout__header {
