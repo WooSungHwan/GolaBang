@@ -19,7 +19,46 @@
 </style>
 <script>
 	$(document).ready(function() {
-
+		var dialog = document.querySelector('dialog');
+		var joinlogin = document.querySelector('#joinlogin');
+		if (!dialog.showModal) {
+			dialogPolyfill.registerDialog(dialog);
+		}
+		
+		if(joinlogin!=null){
+			joinlogin.addEventListener('click', function() {
+				dialog.showModal();
+			});	
+		}
+		
+		dialog.querySelector('.close').addEventListener('click',function() {
+			dialog.close();
+		});
+		
+		$("#submit").on("click",function(){
+			$.ajax({
+				type:"post",
+				url:"/GolaBang/login.do",
+				data:$("#loginForm").serialize(),
+				dataType:"json",
+				success:function(result){
+					if(result.result==1 || result.result==2){
+						location.href="/GolaBang/mainpage.do";
+					}else if(result.result==0){
+						alert("아이디 혹은 비밀번호가 맞지 않습니다.");
+						$("#pw").val("");
+						$("#email").val("");
+						$("#email").focus();
+					}
+				},error:function(a,b,c){
+					console.log(a,b,c);
+				}
+			});
+		});//#submit
+		
+		
+		
+		
 	});
 </script>
 </head>
@@ -34,23 +73,23 @@
 		
 		
 			<!-- 로그인/회원가입 버튼 누르면 -->
-			<dialog class="mdl-dialog">
+			<dialog class="mdl-dialog" id="dialog">
 			<div class="mdl-dialog__actions">
-				<i class="material-icons orange600 close">backspace</i>
+				<i class="material-icons close">clear</i>
 			</div>
 			<h4 class="mdl-dialog__title" style="margin:0 auto; width:120px;">로그인</h4>
 			<div class="mdl-dialog__content">
-				<form action="#">
+				<form action="login.do" method="post" id="loginForm">
 					<div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
-						<input class="mdl-textfield__input" type="text" id="id">
-						<label class="mdl-textfield__label" for="id">아이디를 입력하세요.</label>
+						<input class="mdl-textfield__input" type="text" name="email" id="email">
+						<label class="mdl-textfield__label" for="id">이메일을 입력하세요.</label>
 					</div>
 					<div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
-						<input class="mdl-textfield__input" type="password" id="pw">
+						<input class="mdl-textfield__input" type="password" name="pw" id="pw">
 						<label class="mdl-textfield__label" for="pw">비밀번호를 입력하세요.</label>
 					</div>
 					<div style="float:right;">
-						<input type="submit" class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent" value="로그인"/>
+						<input type="button" id="submit" class="mdl-button mdl-js-button mdl-button--raised mdl-button--colored" value="로그인" />
 					</div>
 					<div style="clear:both;"></div>
 					<div>
@@ -70,23 +109,19 @@
 							src="https://static.nid.naver.com/oauth/big_g.PNG?version=js-2.0.0" style="width:100%;"/></a>
 					</div>
 				</form>
-			</div>
+				
+				<div>
+					<label style="font-size: 11px;">설마 아직도 회원이 아니신가요?</label>
+					<a href="/GolaBang/join.do?mode=1">회원가입</a>
+				</div>
+				
+			<hr />
+				<div>
+					<input type="button" class="mdl-button mdl-js-button" style="width:100%; font-weight:bold;" onclick="location.href='/GolaBang/join.do?mode=2';" value="공인중개사 회원가입" />
+				</div>
 			
+			</div>
 			</dialog>
-			 <script>
-				var dialog = document.querySelector('dialog');
-				var joinlogin = document.querySelector('#joinlogin');
-				if (!dialog.showModal) {
-					dialogPolyfill.registerDialog(dialog);
-				}
-				joinlogin.addEventListener('click', function() {
-					dialog.showModal();
-				});
-				dialog.querySelector('.close').addEventListener('click',
-						function() {
-							dialog.close();
-						});
-			</script> 
 		</main>
 
 

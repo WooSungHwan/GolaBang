@@ -16,9 +16,6 @@
 </script>
 </head>
 <body>
-	
-	<div class="container">
-		<h1 class ="page-header"></h1>
-	</div>
+공인중개사회원가입
 </body>
 </html>

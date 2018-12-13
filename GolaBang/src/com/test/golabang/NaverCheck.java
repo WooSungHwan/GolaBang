@@ -16,6 +16,8 @@ import javax.servlet.http.HttpSession;
 import org.json.simple.JSONObject;
 import org.json.simple.parser.JSONParser;
 
+import com.test.golabang.tenant.GeneralDTO;
+
 @WebServlet("/navercheck.do")
 public class NaverCheck extends HttpServlet {
 
@@ -53,11 +55,24 @@ public class NaverCheck extends HttpServlet {
 			String email = ((JSONObject)obj.get("response")).get("email").toString();
 			String name = ((JSONObject)obj.get("response")).get("name").toString();
 			
+			LoginDAO dao = new LoginDAO();
+			boolean check =dao.joinCheck(email);
+			System.out.println(check);
+			
+			if(!check) {
+				//회원가입이 되어있지 않다면! -> 회원가입 작업 -> email, 이름, 폰번호(0) insert
+				GeneralDTO dto = new GeneralDTO();
+				dto.setEmail(email);
+				dto.setName(name);
+				dto.setKindOf("1");
+				
+				dao.addGeneral(dto); //tblGeneral에 인서트
+			}
+			
 			session.setAttribute("email", email);
 			session.setAttribute("name", name);
 			
 			resp.sendRedirect("/GolaBang/mainpage.do");
-			
 			
 		} catch (Exception e) {
 			e.printStackTrace();

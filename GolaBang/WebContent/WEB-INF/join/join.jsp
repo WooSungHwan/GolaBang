@@ -16,9 +16,7 @@
 </script>
 </head>
 <body>
+	회원가입
 	
-	<div class="container">
-		<h1 class ="page-header"></h1>
-	</div>
 </body>
 </html>
