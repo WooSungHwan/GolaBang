@@ -16,6 +16,27 @@
 	.close:hover{
 		cursor:pointer;
 	}
+	
+	#naverLogin{
+		width:49%; height:36px;
+		color:white;
+		background:#1DC700;
+		font-size:12px;
+		font-weight:bold;
+	}
+	
+	#naverLogin:hover{
+		cursor:pointer;
+	}
+	#kakaoLogin{
+		width:49%; height:36px;
+		color:#795548;
+		background:#FFEB00;
+		font-size:12px;
+		font-weight:bold;
+	}
+	
+	
 </style>
 <script>
 	$(document).ready(function() {
@@ -77,7 +98,7 @@
 			<div class="mdl-dialog__actions">
 				<i class="material-icons close">clear</i>
 			</div>
-			<h4 class="mdl-dialog__title" style="margin:0 auto; width:120px;">로그인</h4>
+			<h4 class="mdl-dialog__title" style="margin:-50px auto 0 auto; width:120px;">로그인</h4>
 			<div class="mdl-dialog__content">
 				<form action="login.do" method="post" id="loginForm">
 					<div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
@@ -88,8 +109,8 @@
 						<input class="mdl-textfield__input" type="password" name="pw" id="pw">
 						<label class="mdl-textfield__label" for="pw">비밀번호를 입력하세요.</label>
 					</div>
-					<div style="float:right;">
-						<input type="button" id="submit" class="mdl-button mdl-js-button mdl-button--raised mdl-button--colored" value="로그인" />
+					<div>
+						<input type="button" id="submit" class="mdl-button mdl-js-button mdl-button--raised mdl-button--colored" value="로그인" style="margin:-10px 0 15px 0; width:100%;" />
 					</div>
 					<div style="clear:both;"></div>
 					<div>
@@ -105,19 +126,22 @@
 							apiURL += "&state=" + state;
 							session.setAttribute("state", state);
 						%>
-						<a href="<%=apiURL%>"><img height="50"
-							src="https://static.nid.naver.com/oauth/big_g.PNG?version=js-2.0.0" style="width:100%;"/></a>
+						
+						<button id="naverLogin" class="mdl-button mdl-js-button" onclick="location.href='<%=apiURL%>';">네이버 로그인</button>
+						
+						<button id="kakaoLogin" class="mdl-button mdl-js-button" >카카오 로그인</button>
 					</div>
 				</form>
 				
-				<div>
+				<div style="margin:5px auto -5px auto;">
 					<label style="font-size: 11px;">설마 아직도 회원이 아니신가요?</label>
-					<a href="/GolaBang/join.do?mode=1">회원가입</a>
+					<a href="/GolaBang/join.do?mode=1" style="float:right; font-weight:bold; color:#795548;">회원가입</a>
+					<a style="clear:both;"></a>
 				</div>
 				
-			<hr />
+				<hr />
 				<div>
-					<input type="button" class="mdl-button mdl-js-button" style="width:100%; font-weight:bold;" onclick="location.href='/GolaBang/join.do?mode=2';" value="공인중개사 회원가입" />
+					<input type="button" class="mdl-button mdl-js-button" style="height:50px;width:100%; font-weight:bold; border:1px solid #ccc; border-radius:5px;" onclick="location.href='/GolaBang/join.do?mode=2';" value="공인중개사 회원가입" />
 				</div>
 			
 			</div>
