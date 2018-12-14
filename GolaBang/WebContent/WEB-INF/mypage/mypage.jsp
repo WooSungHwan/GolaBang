@@ -41,6 +41,7 @@
 #interest_big{
    width: 1500px;
    height: 700px;
+   
    margin: 0px auto;
 }
 
@@ -87,12 +88,6 @@
 				}
 			});
 		});//#submit
-		$("#pw").keyup(function(){
-			alert(event.keyCode);
-			if(event.keyCode==13){
-				
-			}
-		});
 	});
 </script>
 </head>
@@ -108,10 +103,10 @@
 			<div>
 				<!-- 컨텐츠 넣을 곳 -->
 				<div id="title">
-					<h2>Title</h2>
+					<h2>마이페이지</h2>
 				</div>
 				<div id="interest_big">
-					 
+					컨텐츠
 				</div>
 			</div>
 			
@@ -123,3 +118,5 @@
 	</div>
 </body>
 </html>
+
+

@@ -5,7 +5,21 @@ public class GeneralDTO {
 	private String email;
 	private String name;
 	private String kindOf;
+	private String pw;
+	private String tel;
 	
+	public String getTel() {
+		return tel;
+	}
+	public void setTel(String tel) {
+		this.tel = tel;
+	}
+	public String getPw() {
+		return pw;
+	}
+	public void setPw(String pw) {
+		this.pw = pw;
+	}
 	public String getGeneralSeq() {
 		return generalSeq;
 	}
@@ -30,13 +44,11 @@ public class GeneralDTO {
 	public void setKindOf(String kindOf) {
 		this.kindOf = kindOf;
 	}
-	
 	@Override
 	public String toString() {
 		return "GeneralDTO [generalSeq=" + generalSeq + ", email=" + email + ", name=" + name + ", kindOf=" + kindOf
-				+ "]";
+				+ ", pw=" + pw + ", tel=" + tel + "]";
 	}
-	
-	
+
 	
 }

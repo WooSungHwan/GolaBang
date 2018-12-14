@@ -1,4 +1,4 @@
-package com.test.golabang;
+package com.test.golabang.tenant;
 
 import java.io.IOException;
 
@@ -8,18 +8,16 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import javax.servlet.http.HttpSession;
 
-@WebServlet("/mainpage.do")
-public class MainPage extends HttpServlet {
+@WebServlet("/mypage.do")
+public class MyPage extends HttpServlet {
 
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws IOException, ServletException {
-		HttpSession session = req.getSession();
-		if (session.getAttribute("main") == null) {
-			session.setAttribute("main", MyURL.main);
-		}
 		
-		RequestDispatcher dispatcher = req.getRequestDispatcher("/WEB-INF/main/mainpage.jsp");
+		
+		
+		RequestDispatcher dispatcher = req.getRequestDispatcher("/WEB-INF/mypage/mypage.jsp");
 		dispatcher.forward(req, resp);
+
 	}
 }
