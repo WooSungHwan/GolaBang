@@ -1,0 +1,24 @@
+<!-- 연락한 매물 -->
+			<!-- 바구니 --><div style="width:100%; border:1px solid black; text-align:center;">
+					<c:if test="${true}">
+						<div class="demo-card-square mdl-card mdl-shadow--2dp card">
+							<div class="mdl-card__title">
+								<h2 class="mdl-card__title-text"><small>공인중개사</small>&nbsp;<strong>우성환</strong></h2>
+							</div>
+							<div class="mdl-card__supporting-text">
+								<img src="/GolaBang/images/dabang.jpg" class="thumnail"/>
+							</div>
+							<div class="mdl-card__actions mdl-card--border">
+								<div style="width:220px; margin:0 auto;">
+									<span>매물종류</span><br />
+									<span style="font-weight:bold;">거래종류 / 보증금</span><br />
+									<span>해당층 / 면적</span>
+								</div>
+							</div>
+							<button class="mdl-button mdl-js-button mdl-button--accent"
+							style="padding-bottom:15px"><strong>리뷰 작성하기<strong></button>
+						</div>
+					</c:if>
+						<div style="clear:both;"></div>
+			<!-- 바구니 --></div>
+					</div>

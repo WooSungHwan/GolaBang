@@ -13,12 +13,13 @@
 
 <style>
 #title{
-   width: 300px;
+   width: 230px;
    height: 100px;
    margin: 10px auto;
+   text-align:center;
 }
 	#naverLogin{
-		width:48%; height:36px;
+		width:49%; height:36px;
 		color:white;
 		background:#1DC700;
 		font-size:12px;
@@ -29,7 +30,7 @@
 		cursor:pointer;
 	}
 #kakaoLogin{
-		width:48%; height:36px;
+		width:49%; height:36px;
 		color:#795548;
 		background:#FFEB00;
 		font-size:12px;
@@ -187,7 +188,11 @@
 				$("#tel").val(p+"-");
 			}
 		});
-		
+		$("#pw").keyup(function(){
+			if(event.keyCode==13){
+				document.getElementById("submit").click();
+			}
+		});
 		
 	});//ready
 
@@ -196,9 +201,9 @@
 <body>
 	<div class="demo-layout-transparent mdl-layout mdl-js-layout">
 		<!-- header -->
-		<jsp:include page="/inc/header.jsp"></jsp:include>
 
 		<main class="mdl-layout__content">
+		<jsp:include page="/inc/header.jsp"></jsp:include>
 		
 			<div>
 				<!-- 컨텐츠 넣을 곳 -->
@@ -231,7 +236,7 @@
 								<th class="mdl-data-table__cell--non-numeric"><h5>이메일</h5></th>
 								<td class="mdl-data-table__cell--non-numeric">
 									<div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label" >
-										<input class="mdl-textfield__input" type="text" id="joinemail" name="joinemail">
+										<input class="mdl-textfield__input" type="email" id="joinemail" name="joinemail">
 										<label class="mdl-textfield__label" for="joinemail">이메일을 입력해주세요.</label>
 									</div>
 									<input type="button" class="mdl-button mdl-js-button mdl-button--raised mdl-button--colored" id="getcode" value="인증코드 받기">
@@ -277,11 +282,11 @@
 				</div>
 			</div>
 			
+		<!-- footer -->
+		<jsp:include page="/inc/footer.jsp"></jsp:include>
 		</main>
 
 
-		<!-- footer -->
-		<jsp:include page="/inc/footer.jsp"></jsp:include>
 	</div>
 </body>
 </html>

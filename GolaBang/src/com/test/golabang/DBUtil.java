@@ -2,13 +2,14 @@ package com.test.golabang;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
+import java.sql.SQLException;
 
 public class DBUtil {
 	
 	public static Connection getConnection() {
 		Connection conn = null;
 		
-		String url = "jdbc:oracle:thin:@211.63.89.41:1521:xe";
+		String url = "jdbc:oracle:thin:@localhost:1521:xe";
 		String id = "dabangServer";
 		String pw = "java1234";
 		
@@ -19,7 +20,7 @@ public class DBUtil {
 			
 			return conn;
 		} catch (Exception e) {
-			System.out.println("DBUtil.getConnection :" + e.toString());
+			e.printStackTrace();
 		}
 		
 		return null;

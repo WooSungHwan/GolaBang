@@ -15,10 +15,10 @@ public class Logout extends HttpServlet {
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws IOException, ServletException {
 		
 		HttpSession session = req.getSession();
-		session.setAttribute("name",null);
-		session.setAttribute("email",null);
-		session.setAttribute("seq",null);
-		session.setAttribute("kindOf",null);
+		session.removeAttribute("name");
+		session.removeAttribute("email");
+		session.removeAttribute("seq");
+		session.removeAttribute("kindOf");
 		
 		resp.sendRedirect(MyURL.main);
 	}

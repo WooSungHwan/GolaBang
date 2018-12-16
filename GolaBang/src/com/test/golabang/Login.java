@@ -55,6 +55,7 @@ public class Login extends HttpServlet {
 					session.setAttribute("name", dto.getName());
 					session.setAttribute("kindOf", dto.getKindOf());
 					session.setAttribute("seq", dto.getGeneralSeq());
+					session.setAttribute("pw", pw);
 				}
 				// 회원유형으로 거르기
 				if (dto.getKindOf().equals("2")) {

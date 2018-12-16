@@ -8,14 +8,14 @@
 	style="border-bottom: 1px solid #eee;">
 	<div class="mdl-layout__header-row">
 		<!-- Title -->
-		<a href='${main}' class="mdl-layout-title" style="color: black; text-decoration: none;">골라방</a>
+		<a href='/GolaBang/mainpage.do' class="mdl-layout-title" style="color: black; text-decoration: none;">골라방</a>
 		<!-- Add spacer, to align navigation to the right -->
 		<div class="mdl-layout-spacer"></div>
 		<!-- Navigation -->
 		<nav class="mdl-navigation"" >
 			<a class="mdl-navigation__link" href=""
-				style="color: black; font-size: 1.2em; font-weight: bold;">방골라</a> <a
-				class="mdl-navigation__link" href=""
+				style="color: black; font-size: 1.2em; font-weight: bold;">방골라</a>
+			<a class="mdl-navigation__link" href=""
 				style="color: black; font-size: 1.2em; font-weight: bold;">관심목록</a>
 			<a class="mdl-navigation__link" href=""
 				style="color: black; font-size: 1.2em; font-weight: bold;">방내놓기</a>
@@ -42,7 +42,7 @@
 	<nav class="mdl-navigation" style="color: black;">
 		<span class="mdl-layout-title">골라방</span> <a
 			class="mdl-navigation__link" href="">정보 수정</a> <a
-			class="mdl-navigation__link" href="">연락한 부동산</a> <a
+			class="mdl-navigation__link" href="">연락한 매물</a> <a
 			class="mdl-navigation__link" href="">내가 쓴 리뷰</a> <a
 			class="mdl-navigation__link" href="">로그아웃</a>
 	</nav>
@@ -51,9 +51,9 @@
 <ul
 	class="mdl-menu mdl-menu--bottom-left mdl-js-menu mdl-js-ripple-effect"
 	for="demo-menu-lower-right">
-	<li class="mdl-menu__item"><a href="">정보 수정</a></li>
-	<li class="mdl-menu__item"><a href="">연락한 부동산</a></li>
-	<li disabled class="mdl-menu__item"><a href="">내가 쓴 리뷰</a></li>
+	<li class="mdl-menu__item"><a href="/GolaBang/mypage.do?num=1">정보 수정</a></li>
+	<li class="mdl-menu__item"><a href="/GolaBang/mypage.do?num=2">연락한 매물</a></li>
+	<li class="mdl-menu__item"><a href="/GolaBang/mypage.do?num=3">내가 쓴 리뷰</a></li>
 	<li class="mdl-menu__item"><a href="/GolaBang/logout.do">로그아웃</a></li>
 </ul>
 

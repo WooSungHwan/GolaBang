@@ -1,0 +1,47 @@
+<div class="mdl-tabs mdl-js-tabs mdl-js-ripple-effect">
+					<div class="mdl-tabs__tab-bar">
+						<!-- <div style="width:1050px; margin:0 auto;"> -->
+						<a href="/GolaBang/mypage/editinfo.do" target="iframe1" id="mytab1" style="width:33%; "><strong>정보수정</strong></a>
+						<a href="#contacted" class="mdl-tabs__tab" id="mytab2" style="width:33%;"><strong>연락한 매물</strong></a> 
+						<a href="#myReview" class="mdl-tabs__tab" id="mytab3" style="width:33%;"><strong>내가 쓴 리뷰</strong></a>
+						<!-- </div> -->
+					</div>
+					<div class="mdl-tabs__panel " id="editinfo">
+					<div style="margin-top:100px;"></div>
+						<iframe width="100%" height="500" name="iframe1" frameborder="no"></iframe>
+					</div>
+					<div class="mdl-tabs__panel" id="contacted">
+					<div style="margin-top:100px;"></div>
+						2
+					</div>
+
+					<div class="mdl-tabs__panel" id="myReview">
+						<div style="margin-top:100px;"></div>
+<!-- 내가 쓴 리뷰 -->
+						<table class="mdl-data-table mdl-js-data-table" style="width:800px; margin:0 auto;">
+							<tr>
+								<th style="text-align: center; font-size: 15px;">매물번호</th>
+								<th style="text-align: center; font-size: 15px;">작성한 리뷰</th>
+								<th style="text-align: center; font-size: 15px;">날짜/평점</th>
+							</tr>
+							<tr>
+								<td>
+									<div style="width: 100px;">
+										<h5 style="text-align: center;">34232</h5>
+										<div style="text-align: center;">
+											<span>청솔공인중개사무소</span><br /> <span>원룸</span><br> <span>월세
+												/ 500</span><br /> <span>2층 / 15평</span><br>
+										</div>
+									</div>
+								</td>
+								<td>
+									여기 글이 넘쳐가지고 짜른담에 페이지 이동으로 처리
+								</td>
+								<td>
+									
+								</td>
+							</tr>
+
+						</table>
+					</div>
+				</div>
