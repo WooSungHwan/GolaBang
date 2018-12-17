@@ -10,7 +10,16 @@
 <script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=6044ed3fb1b6ba23f4fd59f7a2dfbb1f&libraries=services"></script>
 <script src="http://dmaps.daum.net/map_js_init/postcode.v2.js"></script>
 <%@ include file="/inc/asset.jsp"%>
+<link rel="stylesheet" href="/GolaBang/asset/css/buttonStyle.css" />
 <style>
+
+html, body {
+    font-family: "Helvetica","Arial",sans-serif;
+    font-size: 14px;
+    font-weight: 400;
+    line-height: 34px;
+}
+
 #title{
    width: 230px;
    height: 100px;
@@ -44,20 +53,18 @@
    margin: 0px auto;
 }
 
-.tblAddroom > th {
-	background:#F9F9F9;
-}
-
 .tblInput{
 	margin:40px auto 20px auto; 
-	border:1px solid black; 
+	border:1px solid #A9A9A9; 
 	width:80%;
 }
-.tblInput th{
-	background:#A9A9A9;
+
+.tblInput thead th{	
 	text-align:center; 
 	width:150px;
 	color:black;
+	border:1px solid #A9A9A9;
+	/* background:#795548; */
 }
 .tblInput tr{
 	border:1px solid black;
@@ -66,12 +73,64 @@
 	
 }
 
+.tblInput tbody th{
+	background:#eee;
+	width:100px;
+}
+
+table th{
+	border-collapse: collapse;
+}
+#deposit_monthly{
+	display:none;
+}
+
 </style>
 <script>
 var date = new Date();
 var today;
-var selectedAddress;
+var selectedAddress; //선택된 주소
+
+var pic =1; //input file갯수
+
+/* 입력값들 */
+var room = document.getElementsByName('room'); //라디오
+var building = document.getElementsByName('building'); //라디오
+var inputAddress = selectedAddress + $("#detailaddress").val(); //문자열
+var deal_type = document.getElementsByName("deal_type"); //라디오
+var deposit = document.getElementById("deposit"); //문자열
+var monthly = document.getElementById("monthly"); //문자열
+var supply_pyeong = document.getElementById("supply_pyeong"); //문자열
+var public_pyeong = document.getElementById("public_pyeong"); //문자열
+var buildFloor = document.getElementById("buildingFloor");  //문자열
+var myFloor= document.getElementById("myFloor"); //문자열
+var heating_type = document.getElementById("heating_type"); //문자열
+var movedate = document.getElementById("movedate"); //날짜문자열
+var admincost = document.getElementsByName("admincost"); //라디오
+var elevator = document.getElementsByName("elevator");//라디오
+var builtin = document.getElementsByName("builtin");//라디오
+var pet = document.getElementsByName("pet"); //라디오
+var parking = document.getElementsByName("parking");//라디오
+var valcony = document.getElementsByName("valcony");//라디오
+var optionList = document.getElementsByName("optionList");//체크박스
+var detail_title = document.getElementById("detail_title");  //상세설명 제목
+var detail_content = document.getElementById("detail_content"); //상세설명 내용
+var detail_privatememo = document.getElementById("detail_privatememo"); //상세설명 비공개메모
+
+
+
 	$(document).ready(function() {
+		var txt = "\r\n\r\n상세설명 작성 주의사항\r\n \r\n"
+		txt+="\r\n\r\n- 방 정보와 관련없는 홍보성 정보는 입력하실 수 없습니다.\r\n";
+		txt+="- 중개수수료를 언급한 내용은 입력할 수 없습니다.\r\n\r\n\r\n";
+		txt+="*주의사항 위반시 허위매물로 간주되어 매물 삭제 및 이용의 제한이 있을 수 있습니다.";
+		$("#detail_content").attr("placeholder",txt);
+		
+		txt = "\r\n\r\n - 사진은 가로로 찍은 사진을 권장합니다.(가로사이즈 최소 800px)\r\n\r\n";
+		txt+= " - 사진의 용량은 사진 한 장당 10MB까지 등록이 가능합니다.\r\n\r\n";
+		txt+= " - 사진은 최소 3장 이상 등록해야 하며, 최대 15장까지 권장합니다. 그 이상 등록할 경우 업로드 시간이 다소 지연될 수 있습니다.";
+		$("#pic_textarea").attr("placeholder",txt);
+		
 		today = date.getFullYear()+"-";
 		today += date.getMonth()+1+"-";
 		today += date.getDate();
@@ -120,23 +179,50 @@ var selectedAddress;
 				document.getElementById("submit").click();
 			}
 		});
-		$("#yes_admincost").click(function(){
-			$("#adminfee").attr("disabled",false);
+		
+		
+		for(var i =1; i<=50; i++){
+			$("#buildingFloor").append("<option value="+i+"층>"+i+"층</option>")			
+		}
+		for(var i =1; i<=50; i++){
+			$("#myFloor").append("<option value="+i+"층>"+i+"층</option>")			
+		}
+		
+		$("#supply_pyeong").keyup(function(){
+			$("#supply_m2").val(($("#supply_pyeong").val()*3.3));
+			
 		});
 		
-		$("#no_admincost").click(function(){
-			$("#adminfee").attr("disabled",true);
+		$("#public_pyeong").keyup(function(){
+			$("#public_m2").val(($("#public_pyeong").val()*3.3));
+		});
+		
+		$("#month").click(function(){
+			$("#deposit_monthly").show();
+		});
+		
+		$("#complete").on("click",function(){
+			//보내기
+			if(confirm("등록하시겠습니까?")){
+				
+			}else{
+				
+			}
 		});
 		
 		
-		$("#adminfee").keyup(function(){
+		/* 사진업로드 */
+		$("#pic_add").click(function(){
+			$("#before").children().hide();
+			$("#after").show();
+			
+			$("#after").append("<input type='file' name='attach"+pic+"'/>");
 			
 		});
 		
 		
-		
-		  
 	});//ready
+	
 	
 	
 	function search_address() {
@@ -173,7 +259,13 @@ var selectedAddress;
 					document.getElementById("realaddress").innerText="선택된 주소 : " +data.jibunAddress;
 					selectedAddress=data.jibunAddress;
 				}
-				var mapContainer = document.getElementById('map'), // 지도를 표시할 div 
+				
+				
+				
+				var mapContainer = document.getElementById('map'), // 지도를 표시할 div
+				
+				
+				
 				mapOption = {
 					center : new daum.maps.LatLng(33.450701, 126.570667), // 지도의 중심좌표
 					level : 3
@@ -211,9 +303,9 @@ var selectedAddress;
 				}
 			}
 		}).open();
-		
+		/* $("#detailaddress").focus(); */
+		document.getElementById("detailaddress").focus();
 	}
-	
 </script>
 </head>
 <body>
@@ -221,71 +313,78 @@ var selectedAddress;
 
 		<main class="mdl-layout__content">
 
-
 		<!-- header -->
 		<jsp:include page="/inc/header.jsp"></jsp:include>
+
 		
 			<div>
 				<!-- 컨텐츠 넣을 곳 -->
 				<div id="title">
 					<h2>방 내놓기</h2>
 				</div>
+				
 				<div id="interest_big">
-					<div style="width:80%; margin:0 auto; border:1px solid #ddd; border-radius:10px;">
+				
+				<div style="width:80%; margin:0 auto; border:1px solid #ddd; border-radius:10px;">
 						<ul>
 							<li>등록한 매물은 30일동안 노출됩니다.</li>
 							<li>일반 회원은 1개의 매물만 내놓을 수 있고, 직거래로 표시됩니다.</li>
 						</ul>
 					</div>
+					<form method="post" action="/GolaBang/manage/AddRoomOk.do" id="roomForm" enctype="multipart/data-form">
 					<table class="tblInput" >
 						<thead>
 							<tr>
-								<th class="" colspan="4" style="text-align:center; color:black"><h4><b>매물 종류</b></h4></th>
+								<th class="" colspan="4"><h4><b>매물 종류</b></h4></th>
 							</tr>
 						</thead>
 						<tbody>
 							<tr>
-								<th><h5><b>종류 선택</b></h5></th>
+								<th><b>종류 선택</b></th>
 							 	<td colspan="3"> 
-							 		<label class="mdl-radio mdl-js-radio mdl-js-ripple-effect" for="one">
-									<input class="mdl-radio__button" id="one" name="room" type="radio" value="원룸"> 
-									<span class="mdl-radio__label">원룸</span> </label>
-									
-									<label class="mdl-radio mdl-js-radio mdl-js-ripple-effect" for="two">
-									<input class="mdl-radio__button" id="two" name="room" type="radio" value="투룸"> 
-									<span class="mdl-radio__label">투룸</span> </label>
-							
-									<label class="mdl-radio mdl-js-radio mdl-js-ripple-effect" for="three">
-									<input class="mdl-radio__button" id="three" name="room" type="radio" value="쓰리룸"> 
-									<span class="mdl-radio__label">쓰리룸</span> </label>
-									
-									<label class="mdl-radio mdl-js-radio mdl-js-ripple-effect" for="apart">
-									<input class="mdl-radio__button" id="apart" name="room" type="radio" value="아파트"> 
-									<span class="mdl-radio__label">아파트</span> </label>
-									
-									<label class="mdl-radio mdl-js-radio mdl-js-ripple-effect" for="opistel">
-									<input class="mdl-radio__button" id="opistel" name="room" type="radio" value="오피스텔"> 
-									<span class="mdl-radio__label">오피스텔</span> </label>
+							 		<div class="container">
+								 		<div class="button-wrap">
+								 		
+											<input class="hidden radio-label" type="radio" name="room" id="one" checked="checked" value="원룸"/>
+											<label class="button-label" for="one"><h4>원룸</h4></label> 
+										
+											<input class="hidden radio-label" type="radio" name="room" id="two" value="투룸"/>
+											<label class="button-label" for="two"><h4>투룸</h4></label>
+											
+											<input class="hidden radio-label" type="radio" name="room" id="three" value="쓰리룸"/>
+											<label class="button-label" for="three"><h4>쓰리룸</h4></label>
+											
+											<input class="hidden radio-label" type="radio" name="room" id="apart" value="아파트"/>
+											<label class="button-label" for="apart"><h4>아파트</h4></label>
+											
+											<input class="hidden radio-label" type="radio" name="room" id="opistel" value="오피스텔"/>
+											<label class="button-label" for="opistel"><h4>오피스텔</h4></label>
+											
+											<div style="clear:both;"></div>
+										</div>
+									</div>
 								</td>
 							</tr>
 							<tr>
-								<th><h5><b>건물 유형</b></h5></th>
+								<th><b>건물 유형</b></th>
 								<td colspan="3"  style="text-align:left">
-									<label class="mdl-radio mdl-js-radio mdl-js-ripple-effect" for="dan" onclick="label(this);">
-									<input class="mdl-radio__button" id="dan" name="building" type="radio" value="단독주택"> 
-									<span class="mdl-radio__label">단독주택</span> </label>
 									
-									<label class="mdl-radio mdl-js-radio mdl-js-ripple-effect" for="dagagu">
-									<input class="mdl-radio__button" id="dagagu" name="building" type="radio" value="다가구주택"> 
-									<span class="mdl-radio__label">투룸</span> </label>
-							
-									<label class="mdl-radio mdl-js-radio mdl-js-ripple-effect" for="builla">
-									<input class="mdl-radio__button" id="builla" name="building" type="radio" value="빌라/연립/다세대"> 
-									<span class="mdl-radio__label">빌라/연립/다세대</span> </label>
-									
-									<label class="mdl-radio mdl-js-radio mdl-js-ripple-effect" for="sangga">
-									<input class="mdl-radio__button" id="sangga" name="building" type="radio" value="상가주택"> 
-									<span class="mdl-radio__label">상가</span> </label>
+									<div class="container">
+										<div class="button-wrap">
+											<input class="hidden radio-label" type="radio" name="building" id="dan" checked="checked" value="단독주택" />
+											<label class="button-label" for="dan"><h4>단독주택</h4></label>
+											
+											<input class="hidden radio-label" type="radio" name="building" id="dagagu" value="다가구주택"/>
+											<label class="button-label" for="dagagu"><h4>다가구주택</h4></label>
+											
+											<input class="hidden radio-label" type="radio" name="building" id="builla" value="빌라/연립/다세대"/>
+											<label class="button-label" for="builla"><h4 style="margin:0 10px; height:72px;">빌라/연립/다세대</h4></label>
+											
+											<input class="hidden radio-label" type="radio" name="building" id="sangga" value="상가"/>
+											<label class="button-label" for="sangga"><h4>상가</h4></label>
+											<div style="clear:both;"></div>
+										</div>
+									</div>
 								</td>
 							</tr>
 	
@@ -293,70 +392,113 @@ var selectedAddress;
 					</table>
 					
 					<table class="tblInput">
+						<thead>
 							<tr>
 								<th colspan="4"><h4><b>위치 정보</b></h4></th>
 							</tr>
+						</thead>
 							<tr>
-								<th>주소 입력</th>
+								<th><b>주소 입력</b></th>
 								<td>
 									<div>
 										<span><i class="material-icons" style="color:#A9A9A9;">info</i>도로명, 건물명, 지번에 대해 통합검색이 가능합니다.</span>
-									</div>
+										<input type="button" class="mdl-button mdl-js-button mdl-button--raised mdl-button--colored" id="btnAddress" onclick="search_address();" value="주소 검색">
+									</div>									
 									<div>
-										<input type="text" id="addresstxt" /> <input type="button" value="주소검색" onclick="search_address();" id="btnAddress" />
-									</div>
-									<div>
-										<div id="realaddress" style="width:400px; height:200px; border:1px solid #A9A9A9;">
+										<div id="realaddress" style="width:444px; height:200px; border:1px solid #A9A9A9; margin-top:20px">
 											
+										</div>
+										<div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+											<input class="mdl-textfield__input" name="detailaddress" type="text" id="detailaddress">
+											<label class="mdl-textfield__label" style="margin-top:-5px;" for="detailaddress">상세주소를 입력하세요</label>
 										</div>
 									</div>
 								</td>
 								<td>
-									<div id="map" style="width:600px;border:1px solid #A9A9A9; height:300px;"></div>
+									<div id="map" style="width:500px;border:1px solid #A9A9A9; height:300px;">
+										<div style="margin:120px;"></div>
+										<p style="text-align:center; color:#A9A9A9;">주소 검색을 하시면<br>해당 위치가 지도에 표시됩니다.</p>
+									</div>
 
-						</td>
+								</td>
 							</tr>
 							
 					</table>
 					
 					<table class="tblInput">
-						<tr>
-							<th colspan="2"><h4><b>거래 정보</b></h4></th>
-						</tr>
-						<tr>
-							<th><h5>거래 종류</h5></th>
-							<td>
-								<label class="mdl-radio mdl-js-radio mdl-js-ripple-effect" for="month">
-								<input class="mdl-radio__button" id="month" name="deal_type" type="radio" value="월세"> 
-								<span class="mdl-radio__label">월세</span> </label>
-									
-								<label class="mdl-radio mdl-js-radio mdl-js-ripple-effect" for="all">
-								<input class="mdl-radio__button" id="all" name="deal_type" type="radio" value="전세"> 
-								<span class="mdl-radio__label">전세</span> </label>
-							</td>
-						</tr>
+						<thead>
+							<tr>
+								<th colspan="2"><h4><b>거래 정보</b></h4></th>
+							</tr>
+						</thead>
+							<tr>
+								<th><b>거래 종류</b></th>
+								<td>
+									<div class="container">
+										<div class="button-wrap">
+											<input class="hidden radio-label" type="radio" name="deal_type" id="month" value="월세" checked="checked"/>
+											<label class="button-label" for="month"><h4>월세</h4></label>
+											
+											<input class="hidden radio-label" type="radio" name="deal_type" id="all" value="전세"/>
+											<label class="button-label" for="all"><h4>전세</h4></label>
+											<div style="clear:both;"></div>
+											<div id="deposit_monthly">
+												<div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label" style="float:left;">
+													<input class="mdl-textfield__input" type="text" id="deposit">
+													<label class="mdl-textfield__label" for="deposit" style="margin-top:-10px;">보증금을 입력해주세요.</label>
+												</div>
+												<div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label" style="float:left;">
+													<input class="mdl-textfield__input" type="text" id="monthly">
+													<label class="mdl-textfield__label" for="monthly" style="margin-top:-10px;">월세를 입력해주세요.</label>
+												</div>	
+											</div>
+											
+											
+										<div style="clear:both;"></div>
+									</div>
+									</div>
+								</td>
+							</tr>
 					</table>
 					
-					<table class="tblInput" style="margin:40px auto 20px auto; border:1px solid black; width:80%;">
-						<tr>
-							<th colspan="6"><h4><b>기본 정보</b></h4></th>
-						</tr>
+					<table class="tblInput" style="margin:40px auto 20px auto;width:80%;">
+						<thead>
+							<tr>
+								<th colspan="6"><h4><b>기본 정보</b></h4></th>
+							</tr>
+						</thead>
 						<tr>
 							<th rowspan="2">
-								<div><h5>건물크기<br>(1P=3.3058m<sup>2</sup>)</h5></div>
+								<div><b>건물크기<br>(1P=3.3058m<sup>2</sup>)</b></div>
 							</th>
-							<td colspan="2" >공급면적 <input type="text"/> 평 <input type="text" /> m<sup>2</sup></td>
-							<th rowspan="2">
-								<div>건물 층수</div>
-							</th>
+								<td colspan="2" >								
+									<label style="">평</label>
+									<div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+									    <input class="mdl-textfield__input" type="number" id="supply_pyeong" >
+										<label class="mdl-textfield__label" tabindex="1" style="margin-top:-10px;" for="supply_pyeong">공급면적(평)을 입력하세요</label>
+									</div>
+									
+									<input type="text" id="supply_m2" readonly/>
+								</td>
+							<th rowspan="2"><b>건물 층수</b></th>
 							<td colspan="2">건물 층수 <select id="buildingFloor" name="buildingFloor"><option>건물 층수 선택</option></select></td>
 						</tr>
 						<tr>
-							<td colspan="2" >전용면적 <input type="text"/> 평 <input type="text" /> m<sup>2</sup></td>
-							<td colspan="2">해당 층수 <select id="myFloor" name="myFloor"><option>건물 층수 선택</option></select></td>
+							<td colspan="2" >
+								<label style="">평</label>
+									<div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+									    <input class="mdl-textfield__input" type="number" id="public_pyeong" >
+										<label class="mdl-textfield__label" tabindex="2" style="margin-top:-10px;" for="public_pyeong">전용면적(평)을 입력하세요</label>
+										
+									</div>
+									
+									<input type="text" id="public_m2" readonly/>
+							</td>
+							<td colspan="2">해당 층수<select id="myFloor" name="myFloor"><option>건물 층수 선택</option></select>
+							</td>
 						</tr>
 						<tr>
-							<th><h5>난방 종류</h5></th>
+							<th><b>난방 종류</b></th>
 							<td>
 								<select name="heating_type" id="heating_type">
 									<option>난방 종류 선택</option>
@@ -367,89 +509,230 @@ var selectedAddress;
 							</td>
 						</tr>
 						<tr>
-							<th><h5>입주 가능일</h5></th>
+							<th><b>입주 가능일</b></th>
 							<td>
 								<input type="date" min="${today}" id="movedate"/>
 							</td>
 						</tr>
 					</table>
 					<table class="tblInput">
+						<thead>
+							<tr>
+								<th colspan="6"><h4><b>추가 정보</b></h4></th>
+							</tr>
+						</thead>
 						<tr>
-							<th colspan="6"><h4><b>추가 정보</b></h4></th>
-						</tr>
-						<tr>
-							<th><h5>관리비</h5></th>
-							<td colspan="5">
-								<label class="mdl-radio mdl-js-radio mdl-js-ripple-effect" for="no_admincost">
-								<input class="mdl-radio__button" id="no_admincost" name="admincost" type="radio" checked value="0"> 
-								<span class="mdl-radio__label">없음</span> </label>
+							<th><b>관리비</b></th>
+							<td colspan="6">
+								
+								<div class="container">
+									<div class="button-wrap">
+									<input class="hidden radio-label" type="radio" name="admincost" id="no_admincost" value="0" checked="checked"/>
+									<label class="button-label" for="no_admincost"><h4>없음</h4></label>
 									
-								<label class="mdl-radio mdl-js-radio mdl-js-ripple-effect" for="yes_admincost">
-								<input class="mdl-radio__button" id="yes_admincost" name="admincost" type="radio" value="1"> 
-								<span class="mdl-radio__label">있음</span></label><input type="number" id="adminfee" name="adminfee" disabled/><label>원</label>
+									<input class="hidden radio-label" type="radio" name="admincost" id="yes_admincost" value="1"/>
+									<label class="button-label" for="yes_admincost"><h4>있음</h4></label>
+									<div style="clear:both;"></div>
+									</div>
+								</div>
 							</td>
 						</tr>
 						<tr>
-							<th><h5>주차 여부</h5></th>
-							<td colspan="2">
-								<label class="mdl-radio mdl-js-radio mdl-js-ripple-effect" for="no_parking">
-								<input class="mdl-radio__button" id="no_parking" name="parking" type="radio" checked value="0"> 
-								<span class="mdl-radio__label">불가능</span> </label>
-									
-								<label class="mdl-radio mdl-js-radio mdl-js-ripple-effect" for="yes_parking">
-								<input class="mdl-radio__button" id="yes_parking" name="parking" type="radio" value="1"> 
-								<span class="mdl-radio__label">가능</span></label>
+							<th><b>주차 여부</b></th>
+							<td colspan="3">
+								<div class="container">
+									<div class="button-wrap	">
+										<input class="hidden radio-label" type="radio" name="parking" id="no_parking" value="0" checked="checked"/>
+										<label class="button-label" for="no_parking"><h4>없음</h4></label>
+										
+										<input class="hidden radio-label" type="radio" name="parking" id="yes_parking" value="1"/>
+										<label class="button-label" for="yes_parking"><h4>있음</h4></label>
+										<div style="clear:both;"></div>
+									</div>
+								</div>
 							</td>
-							<th><h5>반려 동물</h5></th>
-							<td colspan="2">
-								<label class="mdl-radio mdl-js-radio mdl-js-ripple-effect" for="no_pet">
-								<input class="mdl-radio__button" id="no_pet" name="pet" type="radio" checked value="0"> 
-								<span class="mdl-radio__label">불가능</span> </label>
-									
-								<label class="mdl-radio mdl-js-radio mdl-js-ripple-effect" for="yes_pet">
-								<input class="mdl-radio__button" id="yes_pet" name="pet" type="radio" value="1"> 
-								<span class="mdl-radio__label">가능</span></label>
-							</td>
-						</tr>
-						<tr>
-							<th><h5>엘리베이터</h5></th>
-							<td colspan="2">
-								<label class="mdl-radio mdl-js-radio mdl-js-ripple-effect" for="no_elevator">
-								<input class="mdl-radio__button" id="no_elevator" name="elevator" type="radio" checked value="0"> 
-								<span class="mdl-radio__label">없음</span> </label>
-									
-								<label class="mdl-radio mdl-js-radio mdl-js-ripple-effect" for="yes_elevator">
-								<input class="mdl-radio__button" id="yes_elevator" name="elevator" type="radio" value="1"> 
-								<span class="mdl-radio__label">있음</span></label>
-							</td>
-							<th><h5>베란다/발코니</h5></th>
-							<td colspan="2">
-								<label class="mdl-radio mdl-js-radio mdl-js-ripple-effect" for="no_valcony">
-								<input class="mdl-radio__button" id="no_valcony" name="valcony" type="radio" checked value="0"> 
-								<span class="mdl-radio__label">없음</span> </label>
-									
-								<label class="mdl-radio mdl-js-radio mdl-js-ripple-effect" for="yes_valcony">
-								<input class="mdl-radio__button" id="yes_valcony" name="valcony" type="radio" value="1"> 
-								<span class="mdl-radio__label">있음</span></label>
+							<th><b>반려 동물</b></th>
+							<td colspan="3">
+								<div class="container">
+									<div class="button-wrap	">
+										<input class="hidden radio-label" type="radio" name="pet" id="no_pet" value="0" checked="checked"/>
+										<label class="button-label" for="no_pet"><h4>없음</h4></label>
+										
+										<input class="hidden radio-label" type="radio" name="pet" id="yes_pet" value="1"/>
+										<label class="button-label" for="yes_pet"><h4>있음</h4></label>
+										<div style="clear:both;"></div>
+									</div>
+								</div>
 							</td>
 						</tr>
 						<tr>
-							<th><h5>빌트인</h5></th>
-							<td colspan="5">
-								<label class="mdl-radio mdl-js-radio mdl-js-ripple-effect" for="no_builtin">
-								<input class="mdl-radio__button" id="no_builtin" name="builtin" type="radio" checked value="0"> 
-								<span class="mdl-radio__label">없음</span> </label>
-									
-								<label class="mdl-radio mdl-js-radio mdl-js-ripple-effect" for="yes_builtin">
-								<input class="mdl-radio__button" id="yes_builtin" name="builtin" type="radio" value="1"> 
-								<span class="mdl-radio__label">있음</span></label>
+							<th><b>엘리베이터</b></th>
+							<td colspan="3">
+								<div class="container">
+									<div class="button-wrap	">
+										<input class="hidden radio-label" type="radio" name="elevator" id="no_elevator" value="0" checked="checked"/>
+										<label class="button-label" for="no_elevator"><h4>없음</h4></label>
+										
+										<input class="hidden radio-label" type="radio" name="elevator" id="yes_elevator" value="1"/>
+										<label class="button-label" for="yes_elevator"><h4>있음</h4></label>
+										<div style="clear:both;"></div>
+									</div>
+								</div>
+							</td>
+							<th><b>베란다/발코니</b></th>
+							<td colspan="3">
+								<div class="container">
+									<div class="button-wrap	">
+										<input class="hidden radio-label" type="radio" name="valcony" id="no_valcony" value="0" checked="checked"/>
+										<label class="button-label" for="no_valcony"><h4>없음</h4></label>
+										
+										<input class="hidden radio-label" type="radio" name="valcony" id="yes_valcony" value="1"/>
+										<label class="button-label" for="yes_valcony"><h4>있음</h4></label>
+										<div style="clear:both;"></div>
+									</div>
+								</div>
 							</td>
 						</tr>
 						<tr>
-							<th><h5>옵션 항목</h5></th>
+							<th><b>빌트인</b></th>
+							<td colspan="6">
+								<div class="container">
+									<div class="button-wrap	">
+										<input class="hidden radio-label" type="radio" name="builtin" id="no_builtin" value="0" checked="checked"/>
+										<label class="button-label" for="no_builtin"><h4>없음</h4></label>
+										
+										<input class="hidden radio-label" type="radio" name="builtin" id="yes_builtin" value="1"/>
+										<label class="button-label" for="yes_builtin"><h4>있음</h4></label>
+										<div style="clear:both;"></div>
+									</div>
+								</div>
+							</td>
+						</tr>
+						<tr>
+							<th><b>옵션 항목</b></th>
+							<td colspan="6">
+								<div class="container">
+									<div class="button-wrap" id="optionlist">
+										<input class="hidden optionlist button-label" type="checkbox" name="optionList" id="option_air"  />
+										<label class="button-label" for="option_air"><h4>에어컨</h4></label>
+										
+										<input class="hidden optionlist button-label" type="checkbox" name="optionList" id="option_washer"  />
+										<label class="button-label" for="option_washer"><h4>세탁기</h4></label>
+										
+										<input class="hidden optionlist button-label" type="checkbox" name="optionList" id="option_bed" />
+										<label class="button-label" for="option_bed"><h4>침대</h4></label>
+										
+										<input class="hidden optionlist button-label" type="checkbox" name="optionList" id="option_desk"  />
+										<label class="button-label" for="option_desk"><h4>책상</h4></label>
+										
+										<input class="hidden optionlist button-label" type="checkbox" name="optionList" id="option_closet"  />
+										<label class="button-label" for="option_closet"><h4>옷장</h4></label>
+										
+										<input class="hidden optionlist button-label" type="checkbox" name="optionList" id="option_TV"  />
+										<label class="button-label" for="option_TV"><h4>TV</h4></label>
+										
+										<input class="hidden optionlist button-label" type="checkbox" name="optionList" id="option_shoes" />
+										<label class="button-label" for="option_shoes"><h4>신발장</h4></label>
+										
+										<input class="hidden optionlist button-label" type="checkbox" name="optionList" id="option_refrigerator"  />
+										<label class="button-label" for="option_refrigerator"><h4>냉장고</h4></label>
+										
+										<input class="hidden optionlist button-label" type="checkbox" name="optionList" id="option_gasrange" />
+										<label class="button-label" for="option_gasrange"><h4>가스레인지</h4></label>
+										
+										<input class="hidden optionlist button-label" type="checkbox" name="optionList" id="option_induction" />
+										<label class="button-label" for="option_induction"><h4>인덕션</h4></label>
+										
+										<input class="hidden optionlist button-label" type="checkbox" name="optionList" id="option_microwave"  />
+										<label class="button-label" for="option_microwave"><h4>전자레인지</h4></label>
+										
+										<input class="hidden optionlist button-label" type="checkbox" name="optionList" id="option_doorlock"  />
+										<label class="button-label" for="option_doorlock"><h4>전자도어락</h4></label>
+										
+										<input class="hidden optionlist button-label" type="checkbox" name="optionList" id="option_bidet" />
+										<label class="button-label" for="option_bidet"><h4>비데</h4></label>
+										<div style="clear:both;"></div>
+									</div>
+								</div>
+							</td>
 						</tr>
 					</table>
 					
+					<table class="tblInput">
+						<thead>
+							<tr>
+								<th colspan="6"><h4><b>상세 설명</b></h4></th>
+							</tr>
+						</thead>
+						<tbody>
+							<tr>
+								<th><b>제목</b></th>
+								<td colspan="5">
+									<input type="text" id="detail_title" style="width:100%; height:50px; border:1px solid #A9A9A9; vertical-align: middle; padding-left:10px;" 
+									placeholder="예) 역삼역 도보 5분거리, 혼자 살기 좋은 조용한 방입니다.">
+										
+								</td>
+							</tr>
+							<tr>
+								<th><b>상세 설명</b></th>
+								<td colspan="5">
+									<textarea id="detail_content" style="width:100%; resize:none; height:300px; border:1px solid #A9A9A9; vertical-align: middle; padding-left:10px;"></textarea>
+								</td>
+							</tr>
+							<tr>
+								<th><b>상세 설명</b></th>
+								<td colspan="5">
+									<input type="text" id="detail_privatememo" placeholder="외부에 공개되지 않으며, 등록자에게만 보이는 메모입니다."
+									 style="width:100%;height:50px; border:1px solid #A9A9A9; vertical-align: middle; padding-left:10px;" />
+								</td>
+							</tr>
+						</tbody>
+					</table>
+					<table class="tblInput">
+						<thead>
+							<tr>
+								<th><h4><b>사진 등록</b></h4></th>
+							</tr>
+						</thead>
+						<tbody>
+							<tr>
+								<td>
+									<textarea id="pic_textarea"cols="164" rows="10" style="margin:10px ; resize:none;" readonly></textarea>
+								</td>
+							</tr>
+							<tr id="addpic">
+								
+							</tr>
+							<tr>
+								<td>
+									<div style="width:98%; height:300px; margin:0 auto; background:#eee; vertical-align: middle; text-align:center;">
+										<div id="before">
+											<i class="material-icons" style="font-size:36px; color:gray;margin-top:40px;">add_a_photo</i>
+											<p>실 사진 최소 3장이상 등록 하셔야 하며, 가로사진을 권장합니다.</p>
+											<p style="color:red;">불필요한 정보(워터마크,상호,전화번호 등)가 있는 매물은 비공개처리됩니다.</p>
+										</div>
+										<div id="after">
+											
+										</div>
+										<div id="file">
+											<input type="button" id="pic_add" class="mdl-button mdl-js-button mdl-button--raised mdl-button--colored" value="사진 추가" style="margin-top:40px;">
+										</div>
+									</div>
+								</td>
+							</tr>
+						</tbody>
+					</table>
+					<div style="width:500px; margin:0 auto;">
+					 
+					<input type="checkbox" id="addRoomCheck" style=""> 
+					<label for="addRoomCheck">매물 관련 규정을 확인하였으며, 입력한 정보는 실제와 다름이 없습니다.</label>
+					
+				</div>
+				<div style="width:220px; margin:0 auto;">					
+					<button class="mdl-button mdl-js-button mdl-button--raised" style="margin-top:40px; margin-right:20px;">등록 취소</button>
+					<button id="complete" class="mdl-button mdl-js-button mdl-button--raised mdl-button--colored" style="margin-top:40px;">매물 등록</button>
+				</div>
+				</form>
 			</div>
 			</div>
 			

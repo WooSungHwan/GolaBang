@@ -13,7 +13,7 @@ public class LoginDAO {
 	private Connection conn;
 	
 	public LoginDAO() {
-		conn= DBUtil.getConnection("localhost","dabangServer","java1234");
+		conn= DBUtil.getConnection();
 	}
 
 	public int loginCheck(String email, String pw) {

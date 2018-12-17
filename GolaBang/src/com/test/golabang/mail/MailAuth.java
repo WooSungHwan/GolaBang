@@ -95,7 +95,6 @@ public class MailAuth extends HttpServlet {
 		}
 
 		writer.print("<script>alert('Send Mail Success!!');location.href='mailForm.html';</script>");
-
 	}
 
 	private String getRandomCode() {
