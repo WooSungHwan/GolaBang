@@ -84,7 +84,20 @@ table th{
 #deposit_monthly{
 	display:none;
 }
-
+/* 사진업로드 */
+#after{
+	width:98%;
+	min-height:300px;
+	display:none;
+}
+#addpic:hover{
+	cursor:pointer;
+}
+.addpic{
+	float:left;
+	width:150px;
+	margin:10px 5px;
+}
 </style>
 <script>
 var date = new Date();
@@ -215,15 +228,35 @@ var detail_privatememo = document.getElementById("detail_privatememo"); //상세
 		$("#pic_add").click(function(){
 			$("#before").children().hide();
 			$("#after").show();
-			
-			$("#after").append("<input type='file' name='attach"+pic+"'/>");
-			
+			var txt = "<div><input type='file' id='attach"+pic+"' name='attach"+pic+"'/>";
+			txt+="<input type=\"button\" onclick='del(this);' value='삭제' /><input type=\"button\" value='수정' onclick='edit(\"attach"+pic+"\");'/></div>";
+			$("#after").append(txt);
+			$("#pic_add").hide();
+			$("#attach"+pic).click();
+			pic++;
 		});
 		
 		
 	});//ready
-	
-	
+	function add(){
+		var txt = "<div><input type='file' id='attach"+pic+"' name='attach"+pic+"'/>";
+		txt+="<input type=\"button\" onclick='del(this);' value='삭제' /><input type=\"button\" value='수정' onclick='edit(\"attach"+pic+"\");'/></div>";
+		$("#after").append(txt);
+		$("#attach"+pic).click();
+		pic++;
+	}
+	function edit(attach){ //수정 메소드
+		$("#"+attach).click();
+	}
+	function del(delbtn){ //삭제 메소드
+		
+		$(delbtn).parent().remove();
+		if($("#after").children().length==2){
+			$("#after").hide();
+			$("#before").children().show();
+			$("#pic_add").show();
+		}
+	};
 	
 	function search_address() {
 		new daum.Postcode({
@@ -478,7 +511,7 @@ var detail_privatememo = document.getElementById("detail_privatememo"); //상세
 										<label class="mdl-textfield__label" tabindex="1" style="margin-top:-10px;" for="supply_pyeong">공급면적(평)을 입력하세요</label>
 									</div>
 									
-									<input type="text" id="supply_m2" readonly/>
+									<input type="text" id="supply_m2" readonly/>m<sup>2</sup>
 								</td>
 							<th rowspan="2"><b>건물 층수</b></th>
 							<td colspan="2">건물 층수 <select id="buildingFloor" name="buildingFloor"><option>건물 층수 선택</option></select></td>
@@ -492,7 +525,7 @@ var detail_privatememo = document.getElementById("detail_privatememo"); //상세
 										
 									</div>
 									
-									<input type="text" id="public_m2" readonly/>
+									<input type="number" id="public_m2" style="text-align:right;" readonly/>m<sup>2</sup>
 							</td>
 							<td colspan="2">해당 층수<select id="myFloor" name="myFloor"><option>건물 층수 선택</option></select>
 							</td>
@@ -711,8 +744,11 @@ var detail_privatememo = document.getElementById("detail_privatememo"); //상세
 											<p>실 사진 최소 3장이상 등록 하셔야 하며, 가로사진을 권장합니다.</p>
 											<p style="color:red;">불필요한 정보(워터마크,상호,전화번호 등)가 있는 매물은 비공개처리됩니다.</p>
 										</div>
-										<div id="after">
+										<div id="after" style=" border:1px solid black; ">
+											<!-- <img class="addpic" src="/GolaBang/images/dabang.jpg"/> -->
 											
+											<input type="button" class="addpic" onclick="add();" id="addpic" style="background:#A9A9A9;" value="사진 추가하기">
+											<div style="clear:both;"></div>
 										</div>
 										<div id="file">
 											<input type="button" id="pic_add" class="mdl-button mdl-js-button mdl-button--raised mdl-button--colored" value="사진 추가" style="margin-top:40px;">
