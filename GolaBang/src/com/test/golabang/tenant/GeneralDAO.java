@@ -41,7 +41,7 @@ public class GeneralDAO {
 			stat.setString(1, dto.getGeneralSeq());
 			stat.setString(2, dto.getTel());
 			stat.setString(3, dto.getName());
-			return stat.executeUpdate();
+			return stat.execute() ? 0 : 1;
 		} catch (Exception e) {
 			System.out.println("GeneralDAO.editTenantInfo :" + e.toString());
 		}

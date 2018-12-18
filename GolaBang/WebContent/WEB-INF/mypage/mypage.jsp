@@ -108,7 +108,7 @@
 
 .tab button:hover{
    color: black;
-   border-bottom: 2px solid black;
+   
 }
 
 .tab button.active{
@@ -127,11 +127,23 @@
 }
 
 
+
 </style>
 <script>
 var passwordCheck = false;
-var num;
+var num = "${num}";
+
+
 $(document).ready(function(){
+	
+	if(num==1){
+		document.getElementsByClassName("tablinks")[0].click();
+	}else if(num==2){
+		document.getElementsByClassName("tablinks")[1].click();
+	}else if(num==3){
+		document.getElementsByClassName("tablinks")[2].click();
+	}
+	
 	var dialog = document.querySelector('dialog');
 	var joinlogin = document.querySelector('#joinlogin');
 	if (!dialog.showModal) {
@@ -149,7 +161,7 @@ $(document).ready(function(){
 	});
 	
 	$("#orgname").val("${name}");
-	$("#orgtel").val("${tel}");
+	$("#orgtel").val("${mtel}");
 	$("#orgemail").val("${email}");
 	
 	
@@ -209,7 +221,7 @@ $(document).ready(function(){
 				success:function(result){
 					if(result.result==1){
 						alert('정보를 수정하였습니다.');
-						location.href="/GolaBang/mypage.do";
+						location.href="/GolaBang/mypage.do?num=1";
 					}else{
 						alert('에러가 발생하였습니다.');
 					}
@@ -218,6 +230,22 @@ $(document).ready(function(){
 				}
 			});
 		}
+	});
+	
+	$("#editinfo").click(function(){
+		$("#contacted").children().hide();
+		$("#review").children().hide();
+		$(this).show();
+	});
+	$("#contacted").click(function(){
+		$("#editinfo").children().hide();
+		$("#review").hide();
+		$(this).show();
+	});
+	$("#review").click(function(){
+		$("#editinfo").children().hide();
+		$("#contacted").children().hide();
+		$(this).show();
 	});
 	
 	  /* $("#mytab1").click(function(){
@@ -264,15 +292,19 @@ $(document).ready(function(){
 });
 function openRoom(evt, roomName){
     var i, tabcontent, tablinks;
-    
+    var num ="${num}";
     tabcontent = document.getElementsByClassName("tabcontent");
     for(i = 0; i < tabcontent.length; i++){
-       tabcontent[i].style.display = "none";
+    	
+       		tabcontent[i].style.display = "none";
+    	
     }
     
     tablinks = document.getElementsByClassName("tablinks");
     for(i = 0; i < tablinks.length; i++){
-       tablinks[i].className = tablinks[i].className.replace(" active", "");
+    	
+       		tablinks[i].className = tablinks[i].className.replace(" active", "");
+    	
     }
     
     document.getElementById(roomName).style.display = "block";
@@ -305,15 +337,102 @@ function openRoom(evt, roomName){
                  </div>
                  
                  <div id="editinfo" class="tabcontent">
+                    <!-- 정보 수정 -->
+					
+						<div style="margin-top:100px;"></div>
+						<!-- 정보수정 -->
+						<div style="margin:0 auto; width:800px;">
+							<form id="editForm">
+							<table class="mdl-data-table mdl-js-data-table" id="edittbl">
+								<tbody>
+									<tr>
+										<th class="mdl-data-table__cell--non-numeric"><h5>이름</h5></th>
+										<td class="mdl-data-table__cell--non-numeric">
+											<div
+												class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+												<input class="mdl-textfield__input" type="text" id="orgname" name="orgname"> 
+												<label class="mdl-textfield__label" for="orgname">이름을 입력해주세요.</label>
+											</div>
+										</td>
+									</tr>
+									<tr>
+										<th class="mdl-data-table__cell--non-numeric"><h5>전화번호</h5></th>
+										<td class="mdl-data-table__cell--non-numeric">
+											<div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+												<input class="mdl-textfield__input" type="text" id="orgtel" name="orgtel"> 
+												<label class="mdl-textfield__label" for="orgtel">휴대폰 번호를 입력해주세요.</label>
+											</div>
+										</td>
+									</tr>
+									<tr>
+										<th class="mdl-data-table__cell--non-numeric"><h5>이메일</h5></th>
+										<td class="mdl-data-table__cell--non-numeric">
+											<div
+												class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+												<input class="mdl-textfield__input" type="text" readonly id="orgemail" name="orgmail">
+											</div>
+										</td>
+									</tr>
+									<tr>
+										<th class="mdl-data-table__cell--non-numeric"><h5>비밀번호 확인</h5></th>
+										<td class="mdl-data-table__cell--non-numeric">
+											<div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+												<input class="mdl-textfield__input" type="password" id="inputpw" name="inputpw"> 
+												<label class="mdl-textfield__label" for="inputpw">현재 비밀번호를 입력해주세요.</label>
+											</div>
+											<div id="pwcheck_comment"></div>
+										</td>
+									</tr>
+								</tbody>
+							</table>
+						</form>
+							<div style="width:190px; margin:30px auto;">
+								
+									<input type="button" class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect" value="취소" onclick="history.back();" />
+									
+									<input type="button" id="btnEdit" class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--colored" value="정보수정" style="float:right;"/>
+								<div style="clear:both"></div>
+							</div>
+						</div>
+
+
+
+
+
                     
                  </div>
                  
                  <div id="contacted" class="tabcontent">
-                    2
+<!-- 연락한 매물 -->
+		<!-- 바구니 --><div style="width:100%;text-align:center;">
+						<c:forEach items="${list}" var="dto">
+						<div class="demo-card-square mdl-card mdl-shadow--2dp card">
+							<div class="mdl-card__title">
+								<h2 class="mdl-card__title-text"><small>공인중개사</small>&nbsp;<strong>${dto.brokerName}</strong></h2>
+							</div>
+							<div class="mdl-card__supporting-text">
+								<img src="/GolaBang/images/dabang.jpg" class="thumnail"/>
+							</div>
+							<div class="mdl-card__actions mdl-card--border">
+								<div style="width:220px; margin:0 auto;">
+									<span>${dto.dealkind} <%-- 월세 --%></span><br />
+									<span style="font-weight:bold;">${dto.kind} <!-- 투룸 --> / ${dto.deposit}<!-- 500만 --></span><br />
+									<span> ${dto.floor}<!-- 8층 --> / ${dto.useArea}평<!-- 30평 --></span>
+								</div>
+							</div>
+							<button class="mdl-button mdl-js-button mdl-button--accent"
+							style="padding-bottom:15px"><strong>리뷰 작성하기<strong></button>
+						</div>
+						</c:forEach>
+					
+						<div style="clear:both;"></div>
+		<!-- 바구니 --></div>
+					                   
                  </div>
                  
-                 <div id="review" class="tabcontent">
-                    3
+                 <div id="review" class="tabcontent" style="border:0px solid black;">
+                    <img src="/GolaBang/images/error2.jpg" style="width:70%;height:70%; display:block; margin:10px auto;"/>
+                    <input type="button" class="mdl-button mdl-js-button mdl-button--raised mdl-button--colored" value="골라방 홈" onclick="location.href='/GolaBang/mainpage.do'"/>
                  </div>
                  
 		</div>

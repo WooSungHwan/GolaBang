@@ -81,7 +81,7 @@ html, body {
 table th{
 	border-collapse: collapse;
 }
-#deposit_monthly{
+#deposit_all{
 	display:none;
 }
 /* 사진업로드 */
@@ -96,7 +96,28 @@ table th{
 .addpic{
 	float:left;
 	width:150px;
-	margin:10px 5px;
+	height:100px;
+	margin-top:36px;
+	margin-left:10px;
+}
+.refresh{
+	position:relative; 
+	top:127px;
+	left:60px;
+}
+.cancel{
+	position:relative; 
+	top:19px;
+	left:87px;
+}
+.pic{
+	width:150px;
+	height:100px;
+}
+.box{
+	float:left;
+	width:170px;
+	height:100px;
 }
 </style>
 <script>
@@ -104,22 +125,22 @@ var date = new Date();
 var today;
 var selectedAddress; //선택된 주소
 
-var pic =1; //input file갯수
+var pic =0; //input file갯수
 
 /* 입력값들 */
-var room = document.getElementsByName('room'); //라디오
-var building = document.getElementsByName('building'); //라디오
-var inputAddress = selectedAddress + $("#detailaddress").val(); //문자열
-var deal_type = document.getElementsByName("deal_type"); //라디오
-var deposit = document.getElementById("deposit"); //문자열
-var monthly = document.getElementById("monthly"); //문자열
-var supply_pyeong = document.getElementById("supply_pyeong"); //문자열
-var public_pyeong = document.getElementById("public_pyeong"); //문자열
-var buildFloor = document.getElementById("buildingFloor");  //문자열
-var myFloor= document.getElementById("myFloor"); //문자열
-var heating_type = document.getElementById("heating_type"); //문자열
-var movedate = document.getElementById("movedate"); //날짜문자열
-var admincost = document.getElementsByName("admincost"); //라디오
+var room = document.getElementsByName('room'); //라디오 name
+var building = document.getElementsByName('building'); //라디오 name
+var inputAddress = selectedAddress+"" + $("#detailaddress").val(); //문자열  name = selectedAddress
+var deal_type = document.getElementsByName("deal_type"); //라디오 name deal_type
+var deposit = document.getElementById("deposit"); //문자열 name deposit
+var monthly = document.getElementById("monthly"); //문자열  name monthly
+var supply_pyeong = document.getElementById("supply_pyeong"); //문자열 name supply_pyeong
+var public_pyeong = document.getElementById("public_pyeong"); //문자열 name public_pyeong
+var buildFloor = document.getElementById("buildingFloor");  //문자열 name buildingFloor
+var myFloor= document.getElementById("myFloor"); //문자열 			name myFloor
+var heating_type = document.getElementById("heating_type"); //문자열  name heating_type
+var movedate = document.getElementById("movedate"); //날짜문자열 name movedate
+var admincost = document.getElementsByName("admincost"); //라디오 name admincost
 var elevator = document.getElementsByName("elevator");//라디오
 var builtin = document.getElementsByName("builtin");//라디오
 var pet = document.getElementsByName("pet"); //라디오
@@ -133,6 +154,19 @@ var detail_privatememo = document.getElementById("detail_privatememo"); //상세
 
 
 	$(document).ready(function() {
+		
+		
+		
+		$("#complete").on("click",function(){
+			
+			//보내기
+			if(confirm("등록하시겠습니까?")){
+				$("#roomForm").submit();
+			}else{
+				
+			} 
+		});
+		
 		var txt = "\r\n\r\n상세설명 작성 주의사항\r\n \r\n"
 		txt+="\r\n\r\n- 방 정보와 관련없는 홍보성 정보는 입력하실 수 없습니다.\r\n";
 		txt+="- 중개수수료를 언급한 내용은 입력할 수 없습니다.\r\n\r\n\r\n";
@@ -202,54 +236,68 @@ var detail_privatememo = document.getElementById("detail_privatememo"); //상세
 		}
 		
 		$("#supply_pyeong").keyup(function(){
-			$("#supply_m2").val(($("#supply_pyeong").val()*3.3));
+			$("#supply_m2").val((parseFloat($("#supply_pyeong").val()*3.3)).toFixed(2));
 			
 		});
 		
 		$("#public_pyeong").keyup(function(){
-			$("#public_m2").val(($("#public_pyeong").val()*3.3));
+			$("#public_m2").val((parseFloat($("#public_pyeong").val()*3.3)).toFixed(2));
 		});
 		
 		$("#month").click(function(){
-			$("#deposit_monthly").show();
+			$("#deposit").show();
+			$("#monthly").parent().show();
+			$("#deposit").focus();
 		});
-		
-		$("#complete").on("click",function(){
-			//보내기
-			if(confirm("등록하시겠습니까?")){
-				
-			}else{
-				
-			}
+		$("#all").click(function(){
+			$("#monthly").parent().hide();
+			$("#deposit").focus();
 		});
 		
 		
 		/* 사진업로드 */
 		$("#pic_add").click(function(){
+			pic++;
 			$("#before").children().hide();
 			$("#after").show();
-			var txt = "<div><input type='file' id='attach"+pic+"' name='attach"+pic+"'/>";
-			txt+="<input type=\"button\" onclick='del(this);' value='삭제' /><input type=\"button\" value='수정' onclick='edit(\"attach"+pic+"\");'/></div>";
-			$("#after").append(txt);
+			var txt = "<div class='box'><input type='file' style='display:none;' id='attach"+pic+"' name='attach"+pic+"'/>";
+			txt+="<i class='material-icons cancel' onclick='del(this);'>cancel</i>"
+			txt+="<i class='material-icons refresh' onclick='edit();'>refresh</i>";
+			txt+="<img style='width:150px;' class='pic' id='img"+pic+"'/></div>";
+			$("#after").prepend(txt);
 			$("#pic_add").hide();
 			$("#attach"+pic).click();
-			pic++;
+			
+			
+			$("#attach"+pic).change(function(){
+			    readURL(this);
+			});
 		});
 		
 		
-	});//ready
-	function add(){
-		var txt = "<div><input type='file' id='attach"+pic+"' name='attach"+pic+"'/>";
-		txt+="<input type=\"button\" onclick='del(this);' value='삭제' /><input type=\"button\" value='수정' onclick='edit(\"attach"+pic+"\");'/></div>";
-		$("#after").append(txt);
-		$("#attach"+pic).click();
-		pic++;
-	}
-	function edit(attach){ //수정 메소드
-		$("#"+attach).click();
-	}
-	function del(delbtn){ //삭제 메소드
 		
+	});//ready
+	
+	function add(){
+		pic++;
+		var txt = "<div class='box'><input type='file' style='display:none;' id='attach"+pic+"' name='attach"+pic+"'/>";
+		txt+="<i class='material-icons cancel' onclick='del(this);'>cancel</i>"
+		txt+="<i class='material-icons refresh' onclick='edit();'>refresh</i>";
+		txt+="<img style='width:150px;' class='pic' id='img"+pic+"'/></div>";
+		$("#after").prepend(txt);
+		$("#attach"+pic).click();
+		
+		$("#attach"+pic).change(function(){
+		    readURL(this);
+		});
+	}
+	
+	function edit(){ //수정 메소드
+		$(event.srcElement).prev().prev().click();
+		var img = $(event.srcElement).next();
+	}
+	
+	function del(delbtn){ //삭제 메소드
 		$(delbtn).parent().remove();
 		if($("#after").children().length==2){
 			$("#after").hide();
@@ -257,7 +305,23 @@ var detail_privatememo = document.getElementById("detail_privatememo"); //상세
 			$("#pic_add").show();
 		}
 	};
+		
+	function readURL(input) {
+	    if (input.files && input.files[0]) {
+	        var reader = new FileReader();
+	        reader.onload = function (e) {
+	        	
+	            $('#img'+pic).attr('src', e.target.result);
+	            
+	        }
+	        reader.readAsDataURL(input.files[0]);
+	    }
+	    
+	}
+	 
 	
+	
+	/* --------------------- */
 	function search_address() {
 		new daum.Postcode({
 			oncomplete : function(data) {
@@ -286,6 +350,7 @@ var detail_privatememo = document.getElementById("detail_privatememo"); //상세
 				// 우편번호와 주소 정보를 해당 필드에 넣는다.
 				if (roadAddr != "") {
 					document.getElementById("realaddress").innerText="선택된 주소 : " +roadAddr;
+					document.getElementById("selectedAddress").value=roadAddr;
 					selectedAddress = roadAddr;
 					
 				} else if (data.jibunAddress != "") {
@@ -336,9 +401,13 @@ var detail_privatememo = document.getElementById("detail_privatememo"); //상세
 				}
 			}
 		}).open();
-		/* $("#detailaddress").focus(); */
 		document.getElementById("detailaddress").focus();
+		/* $("#detailaddress").focus(); */
 	}
+	
+	
+	
+	
 </script>
 </head>
 <body>
@@ -364,7 +433,7 @@ var detail_privatememo = document.getElementById("detail_privatememo"); //상세
 							<li>일반 회원은 1개의 매물만 내놓을 수 있고, 직거래로 표시됩니다.</li>
 						</ul>
 					</div>
-					<form method="post" action="/GolaBang/manage/AddRoomOk.do" id="roomForm" enctype="multipart/data-form">
+					<form method="post" action="/GolaBang/manage/addroomok.do" id="roomForm" enctype="multipart/form-data">
 					<table class="tblInput" >
 						<thead>
 							<tr>
@@ -438,6 +507,7 @@ var detail_privatememo = document.getElementById("detail_privatememo"); //상세
 										<input type="button" class="mdl-button mdl-js-button mdl-button--raised mdl-button--colored" id="btnAddress" onclick="search_address();" value="주소 검색">
 									</div>									
 									<div>
+										<input type="hidden" name="selectedAddress" id="selectedAddress"/>
 										<div id="realaddress" style="width:444px; height:200px; border:1px solid #A9A9A9; margin-top:20px">
 											
 										</div>
@@ -475,18 +545,16 @@ var detail_privatememo = document.getElementById("detail_privatememo"); //상세
 											<input class="hidden radio-label" type="radio" name="deal_type" id="all" value="전세"/>
 											<label class="button-label" for="all"><h4>전세</h4></label>
 											<div style="clear:both;"></div>
-											<div id="deposit_monthly">
+											<div id="deposit_monthly" >
 												<div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label" style="float:left;">
-													<input class="mdl-textfield__input" type="text" id="deposit">
-													<label class="mdl-textfield__label" for="deposit" style="margin-top:-10px;">보증금을 입력해주세요.</label>
+													<input class="mdl-textfield__input" type="text" id="deposit" name="deposit">
+													<label class="mdl-textfield__label" for="deposit" style="margin-top:-10px;">보증금/전세금을 입력해주세요.</label>
 												</div>
 												<div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label" style="float:left;">
-													<input class="mdl-textfield__input" type="text" id="monthly">
+													<input class="mdl-textfield__input" type="text" id="monthly" name="monthly">
 													<label class="mdl-textfield__label" for="monthly" style="margin-top:-10px;">월세를 입력해주세요.</label>
 												</div>	
 											</div>
-											
-											
 										<div style="clear:both;"></div>
 									</div>
 									</div>
@@ -507,11 +575,11 @@ var detail_privatememo = document.getElementById("detail_privatememo"); //상세
 								<td colspan="2" >								
 									<label style="">평</label>
 									<div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
-									    <input class="mdl-textfield__input" type="number" id="supply_pyeong" >
+									    <input class="mdl-textfield__input" type="number" id="supply_pyeong" name="supply_pyeong">
 										<label class="mdl-textfield__label" tabindex="1" style="margin-top:-10px;" for="supply_pyeong">공급면적(평)을 입력하세요</label>
 									</div>
 									
-									<input type="text" id="supply_m2" readonly/>m<sup>2</sup>
+									<input type="text" style="text-align:right; width:50px;" id="supply_m2" readonly/>m<sup>2</sup>
 								</td>
 							<th rowspan="2"><b>건물 층수</b></th>
 							<td colspan="2">건물 층수 <select id="buildingFloor" name="buildingFloor"><option>건물 층수 선택</option></select></td>
@@ -520,12 +588,12 @@ var detail_privatememo = document.getElementById("detail_privatememo"); //상세
 							<td colspan="2" >
 								<label style="">평</label>
 									<div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
-									    <input class="mdl-textfield__input" type="number" id="public_pyeong" >
+									    <input class="mdl-textfield__input" type="number" id="public_pyeong" name="public_pyeong" >
 										<label class="mdl-textfield__label" tabindex="2" style="margin-top:-10px;" for="public_pyeong">전용면적(평)을 입력하세요</label>
 										
 									</div>
 									
-									<input type="number" id="public_m2" style="text-align:right;" readonly/>m<sup>2</sup>
+									<input type="text" id="public_m2" style="text-align:right; width:50px;" readonly/>m<sup>2</sup>
 							</td>
 							<td colspan="2">해당 층수<select id="myFloor" name="myFloor"><option>건물 층수 선택</option></select>
 							</td>
@@ -544,7 +612,7 @@ var detail_privatememo = document.getElementById("detail_privatememo"); //상세
 						<tr>
 							<th><b>입주 가능일</b></th>
 							<td>
-								<input type="date" min="${today}" id="movedate"/>
+								<input type="date" min="${today}" id="movedate" name="movedate"/>
 							</td>
 						</tr>
 					</table>
@@ -646,43 +714,43 @@ var detail_privatememo = document.getElementById("detail_privatememo"); //상세
 							<td colspan="6">
 								<div class="container">
 									<div class="button-wrap" id="optionlist">
-										<input class="hidden optionlist button-label" type="checkbox" name="optionList" id="option_air"  />
+										<input class="hidden optionlist button-label" type="checkbox" value="에어컨" name="optionList" id="option_air"  />
 										<label class="button-label" for="option_air"><h4>에어컨</h4></label>
 										
-										<input class="hidden optionlist button-label" type="checkbox" name="optionList" id="option_washer"  />
+										<input class="hidden optionlist button-label" type="checkbox" value="세탁기" name="optionList" id="option_washer"  />
 										<label class="button-label" for="option_washer"><h4>세탁기</h4></label>
 										
-										<input class="hidden optionlist button-label" type="checkbox" name="optionList" id="option_bed" />
+										<input class="hidden optionlist button-label" type="checkbox" value="침대" name="optionList" id="option_bed" />
 										<label class="button-label" for="option_bed"><h4>침대</h4></label>
 										
-										<input class="hidden optionlist button-label" type="checkbox" name="optionList" id="option_desk"  />
+										<input class="hidden optionlist button-label" type="checkbox" value="책상" name="optionList" id="option_desk"  />
 										<label class="button-label" for="option_desk"><h4>책상</h4></label>
 										
-										<input class="hidden optionlist button-label" type="checkbox" name="optionList" id="option_closet"  />
+										<input class="hidden optionlist button-label" type="checkbox" value="옷장" name="optionList" id="option_closet"  />
 										<label class="button-label" for="option_closet"><h4>옷장</h4></label>
 										
-										<input class="hidden optionlist button-label" type="checkbox" name="optionList" id="option_TV"  />
+										<input class="hidden optionlist button-label" type="checkbox" value="TV" name="optionList" id="option_TV"  />
 										<label class="button-label" for="option_TV"><h4>TV</h4></label>
 										
-										<input class="hidden optionlist button-label" type="checkbox" name="optionList" id="option_shoes" />
+										<input class="hidden optionlist button-label" type="checkbox" value="신발장" name="optionList" id="option_shoes" />
 										<label class="button-label" for="option_shoes"><h4>신발장</h4></label>
 										
-										<input class="hidden optionlist button-label" type="checkbox" name="optionList" id="option_refrigerator"  />
+										<input class="hidden optionlist button-label" type="checkbox" value="냉장고" name="optionList" id="option_refrigerator"  />
 										<label class="button-label" for="option_refrigerator"><h4>냉장고</h4></label>
 										
-										<input class="hidden optionlist button-label" type="checkbox" name="optionList" id="option_gasrange" />
+										<input class="hidden optionlist button-label" type="checkbox" value="가스레인지" name="optionList" id="option_gasrange" />
 										<label class="button-label" for="option_gasrange"><h4>가스레인지</h4></label>
 										
-										<input class="hidden optionlist button-label" type="checkbox" name="optionList" id="option_induction" />
+										<input class="hidden optionlist button-label" type="checkbox" value="인덕션" name="optionList" id="option_induction" />
 										<label class="button-label" for="option_induction"><h4>인덕션</h4></label>
 										
-										<input class="hidden optionlist button-label" type="checkbox" name="optionList" id="option_microwave"  />
+										<input class="hidden optionlist button-label" type="checkbox" value="전자레인지" name="optionList" id="option_microwave"  />
 										<label class="button-label" for="option_microwave"><h4>전자레인지</h4></label>
 										
-										<input class="hidden optionlist button-label" type="checkbox" name="optionList" id="option_doorlock"  />
+										<input class="hidden optionlist button-label" type="checkbox" value="전자도어락" name="optionList" id="option_doorlock"  />
 										<label class="button-label" for="option_doorlock"><h4>전자도어락</h4></label>
 										
-										<input class="hidden optionlist button-label" type="checkbox" name="optionList" id="option_bidet" />
+										<input class="hidden optionlist button-label" type="checkbox" value="비데" name="optionList" id="option_bidet" />
 										<label class="button-label" for="option_bidet"><h4>비데</h4></label>
 										<div style="clear:both;"></div>
 									</div>
@@ -701,7 +769,7 @@ var detail_privatememo = document.getElementById("detail_privatememo"); //상세
 							<tr>
 								<th><b>제목</b></th>
 								<td colspan="5">
-									<input type="text" id="detail_title" style="width:100%; height:50px; border:1px solid #A9A9A9; vertical-align: middle; padding-left:10px;" 
+									<input type="text" name="detail_title" id="detail_title" style="width:100%; height:50px; border:1px solid #A9A9A9; vertical-align: middle; padding-left:10px;" 
 									placeholder="예) 역삼역 도보 5분거리, 혼자 살기 좋은 조용한 방입니다.">
 										
 								</td>
@@ -709,13 +777,13 @@ var detail_privatememo = document.getElementById("detail_privatememo"); //상세
 							<tr>
 								<th><b>상세 설명</b></th>
 								<td colspan="5">
-									<textarea id="detail_content" style="width:100%; resize:none; height:300px; border:1px solid #A9A9A9; vertical-align: middle; padding-left:10px;"></textarea>
+									<textarea id="detail_content" name="detail_content" style="width:100%; resize:none; height:300px; border:1px solid #A9A9A9; vertical-align: middle; padding-left:10px;"></textarea>
 								</td>
 							</tr>
 							<tr>
 								<th><b>상세 설명</b></th>
 								<td colspan="5">
-									<input type="text" id="detail_privatememo" placeholder="외부에 공개되지 않으며, 등록자에게만 보이는 메모입니다."
+									<input type="text" name="detail_privatememo" id="detail_privatememo" placeholder="외부에 공개되지 않으며, 등록자에게만 보이는 메모입니다."
 									 style="width:100%;height:50px; border:1px solid #A9A9A9; vertical-align: middle; padding-left:10px;" />
 								</td>
 							</tr>
@@ -745,7 +813,7 @@ var detail_privatememo = document.getElementById("detail_privatememo"); //상세
 											<p style="color:red;">불필요한 정보(워터마크,상호,전화번호 등)가 있는 매물은 비공개처리됩니다.</p>
 										</div>
 										<div id="after" style=" border:1px solid black; ">
-											<!-- <img class="addpic" src="/GolaBang/images/dabang.jpg"/> -->
+											
 											
 											<input type="button" class="addpic" onclick="add();" id="addpic" style="background:#A9A9A9;" value="사진 추가하기">
 											<div style="clear:both;"></div>

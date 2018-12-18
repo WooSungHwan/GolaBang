@@ -1,10 +1,9 @@
 package com.test.golabang.item;
 
-public class addInfoDTO {
+public class AddInfoDTO {
 
 	private String itemSeq;
 	private String adminCost;
-	private String adminCostItem;
 	private String parking;
 	private String pet;
 	private String elevator;
@@ -13,7 +12,7 @@ public class addInfoDTO {
 	
 	@Override
 	public String toString() {
-		return "addInfoDTO [itemSeq=" + itemSeq + ", adminCost=" + adminCost + ", adminCostItem=" + adminCostItem
+		return "addInfoDTO [itemSeq=" + itemSeq + ", adminCost=" + adminCost 
 				+ ", parking=" + parking + ", pet=" + pet + ", elevator=" + elevator + ", balcony=" + balcony
 				+ ", builtIn=" + builtIn + "]";
 	}
@@ -28,12 +27,6 @@ public class addInfoDTO {
 	}
 	public void setAdminCost(String adminCost) {
 		this.adminCost = adminCost;
-	}
-	public String getAdminCostItem() {
-		return adminCostItem;
-	}
-	public void setAdminCostItem(String adminCostItem) {
-		this.adminCostItem = adminCostItem;
 	}
 	public String getParking() {
 		return parking;

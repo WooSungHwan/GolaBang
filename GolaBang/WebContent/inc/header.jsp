@@ -17,7 +17,7 @@
 				style="color: black; font-size: 1.2em; font-weight: bold;">방골라</a>
 			<a class="mdl-navigation__link" href=""
 				style="color: black; font-size: 1.2em; font-weight: bold;">관심목록</a>
-			<a class="mdl-navigation__link" href=""
+			<a class="mdl-navigation__link" href="/GolaBang/manage/addroom.do"
 				style="color: black; font-size: 1.2em; font-weight: bold;">방내놓기</a>
 			<a class="mdl-navigation__link" href=""
 				style="color: black; font-size: 1.2em; font-weight: bold;">알림</a>

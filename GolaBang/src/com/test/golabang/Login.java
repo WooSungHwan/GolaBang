@@ -12,6 +12,7 @@ import javax.servlet.http.HttpSession;
 
 import org.json.simple.JSONObject;
 
+import com.test.golabang.broker.BrokerDTO;
 import com.test.golabang.tenant.GeneralDTO;
 
 @WebServlet("/login.do")
@@ -42,13 +43,19 @@ public class Login extends HttpServlet {
 		} else {
 
 			LoginDAO dao = new LoginDAO();
-			int result = dao.loginCheck(email, pw);
+			int result = dao.loginCheck(email, pw); //세입자 로그인
+			result = dao.loginCheckBroker(email,pw);//중개사 로그인 체크
 
 			if (result == 1) {
 				// 로그인 성공인 상황임
 				// 해당 객체정보 가져와야함
-
-				GeneralDTO dto = dao.getGeneral(email);
+				
+				GeneralDTO dto = dao.getGeneral(email); //general객체
+				
+				if(dto.getKindOf().equals("2")) {
+					BrokerDTO bdto = dao.getBrokerSeq(email);
+					session.setAttribute("brokerSeq",bdto.getBrokerSeq());
+				}
 				if (dto != null) {
 					// 세선에 정보 저장.
 					session.setAttribute("email", dto.getEmail());

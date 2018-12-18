@@ -16,6 +16,7 @@ import javax.servlet.http.HttpSession;
 import org.json.simple.JSONObject;
 import org.json.simple.parser.JSONParser;
 
+import com.test.golabang.broker.BrokerDTO;
 import com.test.golabang.tenant.GeneralDTO;
 
 @WebServlet("/navercheck.do")
@@ -46,6 +47,7 @@ public class NaverCheck extends HttpServlet {
 				response.append(inputLine);
 			}
 			br.close();
+			
 
 			String json = response.toString();
 			
@@ -65,12 +67,17 @@ public class NaverCheck extends HttpServlet {
 				dto.setEmail(email);
 				dto.setName(name);
 				dto.setKindOf("1");
-				
 				dao.addGeneral(dto); //tblGeneral에 인서트
 			}
-			
-			session.setAttribute("email", email);
-			session.setAttribute("name", name);
+			GeneralDTO dto = dao.getGeneral(email);
+			session.setAttribute("email", dto.getEmail());
+			session.setAttribute("name", dto.getName());
+			session.setAttribute("kindOf", dto.getKindOf());
+			session.setAttribute("seq", dto.getGeneralSeq());
+			if(dto.getKindOf().equals("2")) {
+				BrokerDTO bdto = dao.getBrokerSeq(email);
+				session.setAttribute("brokerSeq",bdto.getBrokerSeq());
+			}
 			
 			resp.sendRedirect("/GolaBang/mainpage.do");
 			

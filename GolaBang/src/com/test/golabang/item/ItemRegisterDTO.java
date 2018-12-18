@@ -1,6 +1,6 @@
 package com.test.golabang.item;
 
-public class itemRegisterDTO {
+public class ItemRegisterDTO {
 
 	private String itemSeq;
 	private String brokerSeq;
@@ -16,6 +16,31 @@ public class itemRegisterDTO {
 	private String view;
 	private String registerDate;
 	private String dealSituation;
+	private String deposit;
+	private String monthly;
+	
+	private String brokerName;
+	
+	
+	
+	public String getBrokerName() {
+		return brokerName;
+	}
+	public void setBrokerName(String brokerName) {
+		this.brokerName = brokerName;
+	}
+	public String getDeposit() {
+		return deposit;
+	}
+	public void setDeposit(String deposit) {
+		this.deposit = deposit;
+	}
+	public String getMonthly() {
+		return monthly;
+	}
+	public void setMonthly(String monthly) {
+		this.monthly = monthly;
+	}
 	public String getItemSeq() {
 		return itemSeq;
 	}

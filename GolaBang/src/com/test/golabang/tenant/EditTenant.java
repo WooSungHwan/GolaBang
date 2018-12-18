@@ -17,8 +17,8 @@ public class EditTenant extends HttpServlet {
 
 	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws IOException, ServletException {
 		HttpSession session = req.getSession();
-		String tel = req.getParameter("tel");
-		String name = req.getParameter("name");
+		String tel = req.getParameter("orgtel");
+		String name = req.getParameter("orgname");
 		String seq = session.getAttribute("seq").toString();
 		
 		GeneralDTO dto = new GeneralDTO();
@@ -28,9 +28,14 @@ public class EditTenant extends HttpServlet {
 		dto.setName(name);
 		
 		int result = dao.editTenantInfo(dto);
-		
+		if(result==1) {
+			session.removeAttribute("name");
+			session.setAttribute("name", name);
+		}
 		JSONObject obj = new JSONObject();
-		obj.put("result", result+"");
+		
+		obj.put("result", result);
+		
 		resp.setHeader("Content-type", "application/json");
 		resp.setCharacterEncoding("UTF-8");
 		
