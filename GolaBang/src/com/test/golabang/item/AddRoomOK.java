@@ -93,6 +93,7 @@ public class AddRoomOK extends HttpServlet {
 		
 		String itemSeq = dao.AddRoom(itemDTO,dDTO,aDTO)+"";
 		
+		System.out.println(itemSeq);
 		
 		//옵션 삽입
 		int result =1;
@@ -161,7 +162,7 @@ public class AddRoomOK extends HttpServlet {
 			//실패
 			resp.setContentType("text/html; charset=UTF-8");
 			String txt = "<script>";
-			txt+="alert('매물을 등록하는 도중 에러가 발생했습니다.')";
+			txt+="alert('매물을 등록하는 도중 에러가 발생했습니다.');";
 			txt+="history.back();";
 			txt+="</script>";
 			PrintWriter writer = resp.getWriter();

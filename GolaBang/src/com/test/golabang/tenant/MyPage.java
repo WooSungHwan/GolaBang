@@ -45,7 +45,7 @@ public class MyPage extends HttpServlet {
 		//2. 매물정보 가져오기(연락했던놈들)
 		ArrayList<ItemRegisterDTO> list = dao.getDealList(session.getAttribute("seq").toString());
 		for(ItemRegisterDTO dto : list) {
-			dto.setDeposit(Integer.parseInt(dto.getDeposit())+"만");
+			dto.setDeposit(Integer.parseInt(dto.getDeposit())/10000+"만");
 		}
 		String num = req.getParameter("num");
 		req.setAttribute("list", list);

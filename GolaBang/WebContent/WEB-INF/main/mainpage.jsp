@@ -43,22 +43,26 @@
 }
 </style>
 <script>
+var loginNeed = "${loginNeed}";
 	$(document).ready(function() {
-		var dialog = document.querySelector('dialog');
+		
+		var dialog = document.querySelector('#dialog');
+		
 		var joinlogin = document.querySelector('#joinlogin');
+		
 		if (!dialog.showModal) {
 			dialogPolyfill.registerDialog(dialog);
 		}
-
-		if (joinlogin != null) {
-			joinlogin.addEventListener('click', function() {
-				dialog.showModal();
-			});
-		}
+		
+		joinlogin.addEventListener('click', function() {
+			dialog.showModal();
+		});
+		
 
 		dialog.querySelector('.close').addEventListener('click', function() {
 			dialog.close();
 		});
+		
 
 		$("#submit").on("click", function() {
 			$.ajax({
@@ -86,6 +90,11 @@
 				document.getElementById("submit").click();
 			}
 		});
+		if(loginNeed==1){
+			setTimeout(function() {
+				$("#joinlogin").click();
+			}, 500);
+		}
 	});
 </script>
 </head>
@@ -97,6 +106,9 @@
 
 		<!-- header -->
 		<jsp:include page="/inc/header.jsp"></jsp:include>
+		
+		
+		
 		
 			<div>
 				<!-- 컨텐츠 넣을 곳 -->

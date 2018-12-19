@@ -15,12 +15,12 @@
 		<nav class="mdl-navigation"" >
 			<a class="mdl-navigation__link" href=""
 				style="color: black; font-size: 1.2em; font-weight: bold;">방골라</a>
-			<a class="mdl-navigation__link" href=""
+			<a class="mdl-navigation__link" href="/GolaBang/tenant/determineroom.do"
 				style="color: black; font-size: 1.2em; font-weight: bold;">관심목록</a>
 			<a class="mdl-navigation__link" href="/GolaBang/manage/addroom.do"
 				style="color: black; font-size: 1.2em; font-weight: bold;">방내놓기</a>
-			<a class="mdl-navigation__link" href=""
-				style="color: black; font-size: 1.2em; font-weight: bold;">알림</a>
+			<a class="mdl-navigation__link" href="/GolaBang/roomregistermain.do"
+				style="color: black; font-size: 1.2em; font-weight: bold;">거래관리</a>
 			<c:if test="${empty email}">
 				<a class="mdl-navigation__link" style="color: #a9a9a9;"><span
 					id="joinlogin">회원가입·로그인</span></a>
@@ -38,15 +38,7 @@
 		</nav>
 	</div>
 </header>
-<div class="mdl-layout__drawer">
-	<nav class="mdl-navigation" style="color: black;">
-		<span class="mdl-layout-title">골라방</span> <a
-			class="mdl-navigation__link" href="">정보 수정</a> <a
-			class="mdl-navigation__link" href="">연락한 매물</a> <a
-			class="mdl-navigation__link" href="">내가 쓴 리뷰</a> <a
-			class="mdl-navigation__link" href="">로그아웃</a>
-	</nav>
-</div>
+
 
 <ul
 	class="mdl-menu mdl-menu--bottom-left mdl-js-menu mdl-js-ripple-effect"

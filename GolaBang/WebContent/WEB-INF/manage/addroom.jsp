@@ -430,11 +430,11 @@ var detail_privatememo = document.getElementById("detail_privatememo"); //상세
 				<div style="width:80%; margin:0 auto; border:1px solid #ddd; border-radius:10px;">
 						<ul>
 							<li>등록한 매물은 30일동안 노출됩니다.</li>
-							<li>일반 회원은 1개의 매물만 내놓을 수 있고, 직거래로 표시됩니다.</li>
+							<li>매물을 등록하자마자 바로 거래를 할 수 있습니다.</li>
 						</ul>
 					</div>
 					<form method="post" action="/GolaBang/manage/addroomok.do" id="roomForm" enctype="multipart/form-data">
-					<table class="tblInput" >
+					<!-- <table class="tblInput" >
 						<thead>
 							<tr>
 								<th class="" colspan="4"><h4><b>매물 종류</b></h4></th>
@@ -491,8 +491,63 @@ var detail_privatememo = document.getElementById("detail_privatememo"); //상세
 							</tr>
 	
 						</tbody>
+					</table> -->
+					<!-- -----------------------------------------------------------위 :  원래 매물종류-------------------------------------------------- -->
+					<table style="width: 1200px; height: 200px; border: 1px solid #e0e0e0; margin: 30px auto; border-radius: 10px; border-collapse: collapse;">
+						<thead>
+							<tr>
+								<td colspan="2" style="border-bottom: 1px solid #e0e0e0; font-size: 24px; text-align: center; padding: 25px;"><b>매물 종류</b></td>
+							</tr>
+							<tr>
+								<th style="background-color: #eee; border-bottom: 1px solid #e0e0e0; width: 100px; height: 80px;">종류 선택</th>
+								<td style="border-bottom: 1px solid #e0e0e0;">
+									<div class="container">
+								 		<div class="button-wrap" style="margin-top: 15px; margin-left: 10px">
+											<input class="hidden radio-label" type="radio" name="room" id="one" checked="checked" value="원룸"/>
+											<label style="height: 50px; text-align: center; line-height: 50px; font-size: 15px; letter-spacing: 3px;" class="button-label" for="one">원룸</label> 
+											
+											<input class="hidden radio-label" type="radio" name="room" id="two" value="투룸"/>
+											<label style="height: 50px; text-align: center; line-height: 50px; font-size: 15px; letter-spacing: 3px;" class="button-label" for="two">투룸</label>
+												
+											<input class="hidden radio-label" type="radio" name="room" id="three" value="쓰리룸"/>
+											<label style="height: 50px; text-align: center; line-height: 50px; font-size: 15px; letter-spacing: 3px;" class="button-label" for="three">쓰리룸</label>
+											
+											<input class="hidden radio-label" type="radio" name="room" id="apart" value="아파트"/>
+											<label style="height: 50px; text-align: center; line-height: 50px; font-size: 15px; letter-spacing: 3px;" class="button-label" for="apart">아파트</label>
+											
+											<input class="hidden radio-label" type="radio" name="room" id="opistel" value="오피스텔"/>
+											<label style="height: 50px; text-align: center; line-height: 50px; font-size: 15px; letter-spacing: 3px;" class="button-label" for="opistel">오피스텔</label>
+											
+											<div style="clear: both;"></div>
+										</div>
+									</div>
+								</td>
+							</tr>
+							<tr>
+								<th style="background-color: #eee; width: 100px; height: 80px;">건물 유형</th>
+								<td style="border-bottom: 1px solid #e0e0e0;">
+									<div class="container">
+										<div class="button-wrap" style="margin-top: 15px; margin-left: 10px">
+											<input class="hidden radio-label" type="radio" name="building" id="dan" checked="checked" value="단독주택" />
+											<label style="height: 50px; text-align: center; line-height: 50px; font-size: 15px; letter-spacing: 3px;" class="button-label" for="dan">단독주택</label>
+											
+											<input class="hidden radio-label" type="radio" name="building" id="dagagu" value="다가구주택"/>
+											<label style="height: 50px; text-align: center; line-height: 50px; font-size: 15px; letter-spacing: -1px;" class="button-label" for="dagagu">다가구주택</label>
+											
+											<input class="hidden radio-label" type="radio" name="building" id="builla" value="빌라/연립/다세대"/>
+											<label style="height: 50px; text-align: center; line-height: 50px; font-size: 13px; letter-spacing: -1px;" class="button-label" for="builla">빌라/연립/다세대</label>
+											
+											<input class="hidden radio-label" type="radio" name="building" id="sangga" value="상가"/>
+											<label style="height: 50px; text-align: center; line-height: 50px; font-size: 15px; letter-spacing: 3px;" class="button-label" for="sangga">상가</label>
+											<div style="clear:both;"></div>
+										</div>
+									</div>
+								</td>
+							</tr>
+						</thead>
 					</table>
-					
+					<!-- -----------------------------------------------------------위 : 바꾼 매물종류-------------------------------------------------- -->
+					<!-- 
 					<table class="tblInput">
 						<thead>
 							<tr>
@@ -527,8 +582,47 @@ var detail_privatememo = document.getElementById("detail_privatememo"); //상세
 							</tr>
 							
 					</table>
-					
-					<table class="tblInput">
+					 -->
+					<!-- -----------------------------------------------------------위 : 원래 위치정보-------------------------------------------------- -->
+					<table style="width: 1200px; height: 200px; border: 1px solid #e0e0e0; margin: 30px auto; border-radius: 10px; border-collapse: collapse;">
+						<thead>
+							<tr>
+								<td colspan="3" style="border-bottom: 1px solid #e0e0e0; font-size: 24px; text-align: center; padding: 25px;"><b>위치 정보</b></td>
+							</tr>
+							<tr>
+								<th style="background-color: #eee; border-bottom: 1px solid #e0e0e0; width: 100px; height: 80px;">주소 입력</th>
+								<td style="outline: 0px solid blue; height: 350px; width: 550px;">
+									<div style="outline: 0px solid black; height: 45px;">
+										<div style="outline: 0px solid orange; margin-top: 3px; float:left; width: 400px; padding-left: 35px;">
+											<i class="material-icons" style="color:#A9A9A9; vertical-align: middle;">info</i>도로명, 건물명, 지번에 대해 통합검색이 가능합니다.
+										</div>
+										<input type="button" class="mdl-button mdl-js-button mdl-button--raised mdl-button--colored" style="margin-top:3px; display: inline-block; margin-left: 20px;" id="btnAddress" onclick="search_address();" value="주소 검색">
+									</div>
+									<div style="outline: 0px solid black; height: 80px;">
+										<input type="hidden" name="selectedAddress" id="selectedAddress"/>
+										<div id="realaddress" style="width:473px; height:80px; border:1px solid #e0e0e0; margin:10px auto;"></div>
+									</div>
+									<div style="outline: 0px solid black; height: 70px;">
+										<div style="border: 0px solid red; width:473px; margin: 15px auto;">
+										<div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+											<input class="mdl-textfield__input" name="detailaddress" type="text" id="detailaddress" style="width: 473px" autocomplete="off">
+											<label class="mdl-textfield__label" style="margin-top:-5px; width: 473px; padding-left: 5px;" for="detailaddress">상세주소를 입력하세요</label>
+										</div>
+										</div>
+									</div>
+								</td>
+								<td style="outline: 0px solid red; width: 550px;">
+									<div id="map" style="width:500px;border:1px solid #e0e0e0; height:300px; margin: 0px auto;">
+										<div style="margin:120px;"></div>
+										<p style="text-align:center; color:#A9A9A9;">주소 검색을 하시면<br>해당 위치가 지도에 표시됩니다.</p>
+									</div>
+								</td>
+							</tr>
+							
+						</thead>
+					</table>
+					<!-- -----------------------------------------------------------위 : 바꾼 위치정보-------------------------------------------------- -->
+					<!-- <table class="tblInput">
 						<thead>
 							<tr>
 								<th colspan="2"><h4><b>거래 정보</b></h4></th>
@@ -560,9 +654,50 @@ var detail_privatememo = document.getElementById("detail_privatememo"); //상세
 									</div>
 								</td>
 							</tr>
+					</table> -->
+					<!-- -----------------------------------------------------------위 : 원래 거래정보-------------------------------------------------- -->
+					<table style="width: 1200px; height: 250px; border: 1px solid #e0e0e0; margin: 30px auto; border-radius: 10px; border-collapse: collapse;">
+						<thead>
+							<tr>
+								<td colspan="3" style="border-bottom: 1px solid #e0e0e0; font-size: 24px; text-align: center; padding: 25px;"><b>거래 정보</b></td>
+							</tr>
+						</thead>
+						<tr>
+							<th style="background-color: #eee; border-bottom: 1px solid #e0e0e0; width: 100px; height: 80px;">거래 종류</th>
+							<td style="border-bottom: 1px solid #e0e0e0; border-right: 1px solid #e0e0e0;  height: 150px;">
+									<div class="container">
+								 		<div class="button-wrap" style="margin-top: 0px; margin-left: 10px; outline: 0px solid black;">
+											<input class="hidden radio-label" type="radio" name="deal_type" id="month" value="월세" checked="checked"/>
+											<label style="height: 50px; text-align: center; line-height: 50px; font-size: 15px; letter-spacing: 3px;" class="button-label" for="month">월세</label> 
+											
+											<input class="hidden radio-label" type="radio" name="deal_type" id="all" value="전세"/>
+											<label style="height: 50px; text-align: center; line-height: 50px; font-size: 15px; letter-spacing: 3px;" class="button-label" for="all">전세</label>
+											
+											<div style="outline: 0px solid orange; margin: 15px auto; float:left; margin-left: 15px; width: 500px;">
+												<i class="material-icons" style="color:#A9A9A9; vertical-align: middle;">info</i>거래 종류에 따라 입력하는 란이 다릅니다. 필수 입력값을 꼭 작성해주세요.
+											</div>
+											
+											<div style="clear: both;"></div>
+										</div>
+										
+										<div id="deposit_monthly" style="outline: 0px solid green; margin-top: 10px; height: 70px;" >
+											<div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label" style="float:left; outline: 0px solid pink; margin-left: 6px; margin-right: 10px;">
+												<input class="mdl-textfield__input" type="text" id="deposit" name="deposit" autocomplete="off">
+												<label class="mdl-textfield__label" for="deposit" style="margin-top:-10px; padding-left: 5px;">보증금/전세금을 입력해주세요.</label>
+											</div>
+											<div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label" style="float:left; outline: 0px solid navy;">
+												<input class="mdl-textfield__input" type="text" id="monthly" name="monthly" autocomplete="off">
+												<label class="mdl-textfield__label" for="monthly" style="margin-top:-10px; padding-left: 5px;">월세를 입력해주세요.</label>
+											</div>	
+										</div>
+										<div style="clear:both;"></div>
+										
+									</div>
+								</td>
+						</tr>
 					</table>
-					
-					<table class="tblInput" style="margin:40px auto 20px auto;width:80%;">
+					<!-- -----------------------------------------------------------위 : 바꾼 거래정보-------------------------------------------------- -->
+					<%-- <table class="tblInput" style="margin:40px auto 20px auto;width:80%;">
 						<thead>
 							<tr>
 								<th colspan="6"><h4><b>기본 정보</b></h4></th>
@@ -615,7 +750,70 @@ var detail_privatememo = document.getElementById("detail_privatememo"); //상세
 								<input type="date" min="${today}" id="movedate" name="movedate"/>
 							</td>
 						</tr>
+					</table> --%>
+					<!-- -----------------------------------------------------------위 : 원래 기본정보-------------------------------------------------- -->
+					<table style="width: 1200px; height: 200px; border: 1px solid #e0e0e0; margin: 30px auto; border-radius: 10px; border-collapse: collapse;">
+						<thead>
+							<tr>
+								<td colspan="4" style="border-bottom: 1px solid #e0e0e0; border-right: 1px solid #e0e0e0; font-size: 24px; text-align: center; padding: 25px;"><b>기본 정보</b></td>
+							</tr>
+						</thead>
+							<tr>
+								<th rowspan="2" style="background-color: #eee; border-bottom: 1px solid #e0e0e0; width: 100px; height: 80px;">건물 크기<br>(1P=3.3058m<sup>2</sup>)</th>
+								<td style="border-bottom: 1px solid #e0e0e0; width: 500px;">
+									<span style="padding-left: 10px; font-weight: bold; color: rgb(68, 68, 68);">공급 면적</span>
+									<div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label" style="width: 100px; margin-left:5px; margin-right: 5px;">
+									    <input class="mdl-textfield__input" type="number" id="supply_pyeong" name="supply_pyeong" style="border: 1px solid #e0e0e0; width: 100px; height:50px; padding: 10px; color: rgb(68, 68, 68);">
+										<label class="mdl-textfield__label" tabindex="1" style="margin-top:-10px; width: 100px;" for="supply_pyeong"></label>
+									</div>
+									<span>평</span>
+									<input type="text" style="text-align:right; border: 1px solid #e0e0e0; outline:none; width: 100px; height:50px; padding: 10px; margin-left:5px; margin-right: 5px; color: rgb(68, 68, 68);" id="supply_m2" readonly/>m<sup>2</sup>
+								</td>
+								
+								<th rowspan="2" style="background-color: #eee; border-bottom: 1px solid #e0e0e0; width: 100px; height: 80px;">건물 층수</th>
+								<td colspan="2" style="border-bottom: 1px solid #e0e0e0;">
+									<span style="padding-left: 10px; font-weight: bold; color: rgb(68, 68, 68); padding-right: 5px;">건물 층수</span>
+									<select id="buildingFloor" style="padding: 15px; outline: none; border: 1px solid #e0e0e0;" name="buildingFloor"><option>건물 층수 선택</option></select>
+								</td>
+							</tr>
+							<tr>
+							
+								<td colspan="2" style="border-bottom: 1px solid #e0e0e0;" >
+									<span style="padding-left: 10px; font-weight: bold; color: rgb(68, 68, 68);">전용 면적</span>
+									<div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label" style="width: 100px; margin-left:5px; margin-right: 5px;">
+									    <input class="mdl-textfield__input" type="number" id="public_pyeong" name="public_pyeong" style="border: 1px solid #e0e0e0; width: 100px; height:50px; padding: 10px; color: rgb(68, 68, 68);">
+										<label class="mdl-textfield__label" tabindex="2" style="margin-top:-10px; width: 100px;" for="public_pyeong"></label>
+									</div>
+									<span>평</span>
+									<input type="text" id="public_m2" style="text-align:right; outline:none; border: 1px solid #e0e0e0; width: 100px;  height:50px; padding: 10px; margin-left:5px; margin-right: 5px; color: rgb(68, 68, 68);" readonly/>m<sup>2</sup>
+								</td>
+								<td colspan="2" style="border-bottom: 1px solid #e0e0e0;">
+									<span style="padding-left: 10px; font-weight: bold; color: rgb(68, 68, 68); padding-right: 5px;">해당 층수</span>
+									<select id="myFloor" style="padding: 15px; outline: none; border: 1px solid #e0e0e0;" name="myFloor"><option>해당 층수 선택</option></select>
+								</td>
+							</tr>
+							<tr>
+								<th style="background-color: #eee; border-bottom: 1px solid #e0e0e0; width: 100px; height: 80px;">난방 종류</th>
+								<td colspan="3" style=" border-bottom: 1px solid #e0e0e0; border-right: 1px solid #e0e0e0;">
+									<select style="padding: 15px; margin-left: 10px; outline: none; border: 1px solid #e0e0e0; " name="heating_type" id="heating_type">
+										<option>난방 종류 선택</option>
+										<option value="중앙난방">중앙난방</option>
+										<option value="개별난방">개별난방</option>
+										<option value="지역난방">지역난방</option>
+									</select>
+								</td>
+							</tr>
+							
+							<tr>
+								<th style="background-color: #eee; border-bottom: 1px solid #e0e0e0; width: 100px; height: 80px;">입주 가능일</th>
+								<td colspan="3" style="border-right: 1px solid #e0e0e0;">
+									<input type="date" min="${today}" id="movedate" name="movedate" style="margin-left: 10px; padding: 15px; border: 1px solid #e0e0e0;"/>
+								</td>
+							</tr>
+						
 					</table>
+					<!-- -----------------------------------------------------------위 : 바꾼 기본정보-------------------------------------------------- -->
+					<!-- 
 					<table class="tblInput">
 						<thead>
 							<tr>
@@ -757,9 +955,158 @@ var detail_privatememo = document.getElementById("detail_privatememo"); //상세
 								</div>
 							</td>
 						</tr>
-					</table>
+					</table> -->
+					<!-- -----------------------------------------------------------위 : 원래 추가정보-------------------------------------------------- -->
 					
-					<table class="tblInput">
+					<table style="width: 1200px; height: 200px; border: 1px solid #e0e0e0; margin: 30px auto; border-radius: 10px; border-collapse: collapse;">
+						<thead>
+							<tr>
+								<th colspan="6" style="border-bottom: 1px solid #e0e0e0; border-right: 1px solid #e0e0e0; font-size: 24px; text-align: center; padding: 25px;"><b>추가 정보</b></th>
+							</tr>
+						</thead>
+							<tr>
+								<th style="background-color: #eee; border-bottom: 1px solid #e0e0e0; width: 100px; height: 80px;">관리비</th>
+								<td colspan="6" style="border-bottom: 1px solid #e0e0e0; border-right: 1px solid #e0e0e0; width: 500px;">
+								
+									<div class="container">
+								 		<div class="button-wrap" style="margin-top: 15px; margin-left: 10px">
+								 			<input class="hidden radio-label" type="radio" name="admincost" id="no_admincost" value="0" checked="checked"/>
+											<label style="height: 50px; text-align: center; line-height: 50px; font-size: 15px; letter-spacing: 3px;" class="button-label" for="no_admincost">없음</label>
+											
+											<input class="hidden radio-label" type="radio" name="admincost" id="yes_admincost" value="1"/>
+											<label style="height: 50px; text-align: center; line-height: 50px; font-size: 15px; letter-spacing: 3px;" class="button-label" for="yes_admincost">있음</label>
+											<div style="clear:both;"></div>
+								 		</div>
+								 	</div>
+								</td>
+							</tr>	
+							
+							<tr>
+								<th style="background-color: #eee; border-bottom: 1px solid #e0e0e0; width: 100px; height: 80px;">주차여부</th>
+								<td colspan="3" style="border-bottom: 1px solid #e0e0e0; width: 500px;">
+								
+									<div class="container">
+										<div class="button-wrap"  style="margin-top: 15px; margin-left: 10px">
+											<input class="hidden radio-label" type="radio" name="parking" id="no_parking" value="0" checked="checked"/>
+											<label style="height: 50px; text-align: center; line-height: 50px; font-size: 15px; letter-spacing: 3px;" class="button-label" for="no_parking">없음</label>
+											
+											<input class="hidden radio-label" type="radio" name="parking" id="yes_parking" value="1"/>
+											<label style="height: 50px; text-align: center; line-height: 50px; font-size: 15px; letter-spacing: 3px;" class="button-label" for="yes_parking">있음</label>
+											<div style="clear:both;"></div>
+										</div>
+									</div>
+								</td>
+							
+								<th style="background-color: #eee; border-bottom: 1px solid #e0e0e0; width: 100px; height: 80px;">반려동물</th>
+								<td colspan="3" style="border-bottom: 1px solid #e0e0e0; width: 500px;">
+									<div class="container">
+										<div class="button-wrap" style="margin-top: 15px; margin-left: 10px">
+											<input class="hidden radio-label" type="radio" name="pet" id="no_pet" value="0" checked="checked"/>
+											<label style="height: 50px; text-align: center; line-height: 50px; font-size: 15px; letter-spacing: 3px;" class="button-label" for="no_pet">없음</label>
+											
+											<input class="hidden radio-label" type="radio" name="pet" id="yes_pet" value="1"/>
+											<label style="height: 50px; text-align: center; line-height: 50px; font-size: 15px; letter-spacing: 3px;" class="button-label" for="yes_pet">있음</label>
+											<div style="clear:both;"></div>
+										</div>
+									</div>
+								</td>
+							</tr>
+							
+							<tr>
+								<th style="background-color: #eee; border-bottom: 1px solid #e0e0e0; width: 100px; height: 80px;">엘리베이터</th>
+									<td colspan="3" style="border-bottom: 1px solid #e0e0e0; width: 500px;">
+										<div class="container">
+											<div class="button-wrap" style="margin-top: 15px; margin-left: 10px">
+												<input class="hidden radio-label" type="radio" name="elevator" id="no_elevator" value="0" checked="checked"/>
+												<label style="height: 50px; text-align: center; line-height: 50px; font-size: 15px; letter-spacing: 3px;" class="button-label" for="no_elevator">없음</label>
+												
+												<input class="hidden radio-label" type="radio" name="elevator" id="yes_elevator" value="1"/>
+												<label style="height: 50px; text-align: center; line-height: 50px; font-size: 15px; letter-spacing: 3px;" class="button-label" for="yes_elevator">있음</label>
+												<div style="clear:both;"></div>
+											</div>
+										</div>
+									</td>
+								<th style="background-color: #eee; border-bottom: 1px solid #e0e0e0; width: 100px; height: 80px;">베란다/발코니</th>
+									<td colspan="3" style="border-bottom: 1px solid #e0e0e0; width: 500px;">
+										<div class="container">
+											<div class="button-wrap" style="margin-top: 15px; margin-left: 10px">
+												<input class="hidden radio-label" type="radio" name="valcony" id="no_valcony" value="0" checked="checked"/>
+												<label style="height: 50px; text-align: center; line-height: 50px; font-size: 15px; letter-spacing: 3px;" class="button-label" for="no_valcony">없음</label>
+												
+												<input class="hidden radio-label" type="radio" name="valcony" id="yes_valcony" value="1"/>
+												<label style="height: 50px; text-align: center; line-height: 50px; font-size: 15px; letter-spacing: 3px;" class="button-label" for="yes_valcony">있음</label>
+												<div style="clear:both;"></div>
+											</div>
+										</div>
+									</td>
+							</tr>
+							<tr>
+								<th style="background-color: #eee; border-bottom: 1px solid #e0e0e0; width: 100px; height: 80px;">빌트인</th>
+									<td colspan="6" style="border-bottom: 1px solid #e0e0e0; border-right: 1px solid #e0e0e0; width: 500px;">
+										<div class="container">
+											<div class="button-wrap" style="margin-top: 15px; margin-left: 10px">
+												<input class="hidden radio-label" type="radio" name="builtin" id="no_builtin" value="0" checked="checked"/>
+												<label style="height: 50px; text-align: center; line-height: 50px; font-size: 15px; letter-spacing: 3px;" class="button-label" for="no_builtin">없음</label>
+												
+												<input class="hidden radio-label" type="radio" name="builtin" id="yes_builtin" value="1"/>
+												<label style="height: 50px; text-align: center; line-height: 50px; font-size: 15px; letter-spacing: 3px;" class="button-label" for="yes_builtin">있음</label>
+												<div style="clear:both;"></div>
+											</div>
+										</div>
+									</td>
+								</tr>
+							<tr>
+								<th style="background-color: #eee; border-bottom: 1px solid #e0e0e0; width: 100px; height: 80px;">옵션항목</th>
+									<td colspan="6" style="border-bottom: 1px solid #e0e0e0; border-right: 1px solid #e0e0e0; width: 500px;">
+									<div class="container">
+										<div class="button-wrap" style="margin-top: 15px; margin-left: 10px" id="optionlist">
+										<input class="hidden optionlist button-label" type="checkbox" value="에어컨" name="optionList" id="option_air"  />
+										<label style="height: 50px; text-align: center; line-height: 50px; font-size: 15px; letter-spacing: 3px;" class="button-label" for="option_air">에어컨</label>
+										
+										<input class="hidden optionlist button-label" type="checkbox" value="세탁기" name="optionList" id="option_washer"  />
+										<label style="height: 50px; text-align: center; line-height: 50px; font-size: 15px; letter-spacing: 3px;" class="button-label" for="option_washer">세탁기</label>
+										
+										<input class="hidden optionlist button-label" type="checkbox" value="침대" name="optionList" id="option_bed" />
+										<label style="height: 50px; text-align: center; line-height: 50px; font-size: 15px; letter-spacing: 3px;" class="button-label" for="option_bed">침대</label>
+										
+										<input class="hidden optionlist button-label" type="checkbox" value="책상" name="optionList" id="option_desk"  />
+										<label style="height: 50px; text-align: center; line-height: 50px; font-size: 15px; letter-spacing: 3px;" class="button-label" for="option_desk">책상</label>
+										
+										<input class="hidden optionlist button-label" type="checkbox" value="옷장" name="optionList" id="option_closet"  />
+										<label style="height: 50px; text-align: center; line-height: 50px; font-size: 15px; letter-spacing: 3px;" class="button-label" for="option_closet">옷장</label>
+										
+										<input class="hidden optionlist button-label" type="checkbox" value="TV" name="optionList" id="option_TV"  />
+										<label style="height: 50px; text-align: center; line-height: 50px; font-size: 15px; letter-spacing: 3px;" class="button-label" for="option_TV">TV</label>
+										
+										<input class="hidden optionlist button-label" type="checkbox" value="신발장" name="optionList" id="option_shoes" />
+										<label style="height: 50px; text-align: center; line-height: 50px; font-size: 15px; letter-spacing: 3px;" class="button-label" for="option_shoes">신발장</label>
+										
+										<input class="hidden optionlist button-label" type="checkbox" value="냉장고" name="optionList" id="option_refrigerator"  />
+										<label style="height: 50px; text-align: center; line-height: 50px; font-size: 15px; letter-spacing: 3px;" class="button-label" for="option_refrigerator">냉장고</label>
+										
+										<input class="hidden optionlist button-label" type="checkbox" value="가스레인지" name="optionList" id="option_gasrange" />
+										<label style="height: 50px; text-align: center; line-height: 50px; font-size: 15px; letter-spacing: 3px;" class="button-label" for="option_gasrange">가스레인지</label>
+										
+										<input class="hidden optionlist button-label" type="checkbox" value="인덕션" name="optionList" id="option_induction" />
+										<label style="height: 50px; text-align: center; line-height: 50px; font-size: 15px; letter-spacing: 3px;" class="button-label" for="option_induction">인덕션</label>
+										
+										<input class="hidden optionlist button-label" type="checkbox" value="전자레인지" name="optionList" id="option_microwave"  />
+										<label style="height: 50px; text-align: center; line-height: 50px; font-size: 15px; letter-spacing: 3px;" class="button-label" for="option_microwave">전자레인지</label>
+										
+										<input class="hidden optionlist button-label" type="checkbox" value="전자도어락" name="optionList" id="option_doorlock"  />
+										<label style="height: 50px; text-align: center; line-height: 50px; font-size: 15px; letter-spacing: 3px;" class="button-label" for="option_doorlock">전자도어락</label>
+										
+										<input class="hidden optionlist button-label" type="checkbox" value="비데" name="optionList" id="option_bidet" />
+										<label style="height: 50px; text-align: center; line-height: 50px; font-size: 15px; letter-spacing: 3px;" class="button-label" for="option_bidet">비데</label>
+										<div style="clear:both;"></div>
+									</div>
+								</div>
+							</td>
+						</tr>
+							
+					</table>
+					<!-- -----------------------------------------------------------위 : 바꾼 추가정보-------------------------------------------------- -->
+					<!-- <table class="tblInput">
 						<thead>
 							<tr>
 								<th colspan="6"><h4><b>상세 설명</b></h4></th>
@@ -788,7 +1135,41 @@ var detail_privatememo = document.getElementById("detail_privatememo"); //상세
 								</td>
 							</tr>
 						</tbody>
+					</table> -->
+					<!-- -----------------------------------------------------------위 : 원래 상세설명-------------------------------------------------- -->
+					
+					<table style="width: 1200px; height: 200px; border: 1px solid #e0e0e0; margin: 30px auto; border-radius: 10px; border-collapse: collapse;">
+						<thead>
+							<tr>
+								<th colspan="6" style="border-bottom: 1px solid #e0e0e0; border-right: 1px solid #e0e0e0; font-size: 24px; text-align: center; padding: 25px;"><b>상세 설명</b></th>
+							</tr>
+						</thead>
+						<tbody>
+							<tr>
+								<th style="background-color: #eee; border-bottom: 1px solid #e0e0e0; width: 100px; height: 80px;">제목</th>
+								<td colspan="5" style="border-bottom: 1px solid #e0e0e0; border-right: 1px solid #e0e0e0; width: 500px;">
+									<input type="text" name="detail_title" id="detail_title" style="width:1085px; margin-left: 5px; outline: none; height:50px; border:1px solid #e0e0e0; vertical-align: middle; padding-left:10px;" 
+									placeholder="예) 역삼역 도보 5분거리, 혼자 살기 좋은 조용한 방입니다." autocomplete="off">
+										
+								</td>
+							</tr>
+							<tr>
+								<th style="background-color: #eee; border-bottom: 1px solid #e0e0e0; width: 100px; height: 80px;">상세설명</th>
+								<td colspan="5" style="border-bottom: 1px solid #e0e0e0; border-right: 1px solid #e0e0e0; width: 500px;">
+									<textarea autocomplete="off" id="detail_content" name="detail_content" style="width:1085px; outline:none; margin: 10px 5px; resize:none; height:280px; border:1px solid #e0e0e0; vertical-align: middle; padding-left:10px;"></textarea>
+								</td>
+							</tr>
+							<tr>
+								<th style="background-color: #eee; border-bottom: 1px solid #e0e0e0; width: 100px; height: 80px;">비공개 메모</th>
+								<td colspan="5" style="border-bottom: 1px solid #e0e0e0; border-right: 1px solid #e0e0e0; width: 500px;">
+									<input type="text" name="detail_privatememo" id="detail_privatememo" autocomplete="off" placeholder="외부에 공개되지 않으며, 등록자에게만 보이는 메모입니다."
+									 style="width:1085px;height:50px; border:1px solid #e0e0e0; vertical-align: middle; outline:none; margin: 10px 5px; padding-left:10px;" />
+								</td>
+							</tr>
+						</tbody>
 					</table>
+					<!-- -----------------------------------------------------------위 : 바꾼 상세설명-------------------------------------------------- -->
+					<!-- 
 					<table class="tblInput">
 						<thead>
 							<tr>
@@ -826,12 +1207,61 @@ var detail_privatememo = document.getElementById("detail_privatememo"); //상세
 							</tr>
 						</tbody>
 					</table>
-					<div style="width:500px; margin:0 auto;">
-					 
-					<input type="checkbox" id="addRoomCheck" style=""> 
-					<label for="addRoomCheck">매물 관련 규정을 확인하였으며, 입력한 정보는 실제와 다름이 없습니다.</label>
+					 -->
+					<!-- -----------------------------------------------------------위 : 원래 사진등록-------------------------------------------------- -->
 					
-				</div>
+					
+					<table style="width: 1200px; height: 200px; border: 1px solid #e0e0e0; margin: 30px auto; border-radius: 10px; border-collapse: collapse;">
+						<thead>
+							<tr>
+								<th colspan="6" style="border-bottom: 1px solid #e0e0e0; border-right: 1px solid #e0e0e0; font-size: 24px; text-align: center; padding: 25px;"><b>사진 등록</b></th>
+							</tr>
+						</thead>
+						<tbody>
+							<tr>
+								<td style="border-right: 1px solid #e0e0e0;">
+									<textarea id="pic_textarea"cols="164" rows="10" style="margin:10px; border: 1px solid #e0e0e0; outline: none; resize:none;" readonly></textarea>
+								</td>
+							</tr>
+							<tr id="addpic">
+								
+							</tr>
+							<tr>
+								<td style="border-right: 1px solid #e0e0e0;">
+									<div style="width:98%; height:300px; margin:0 auto; background:#eee; margin-bottom: 25px; vertical-align: middle; text-align:center;">
+										<div id="before">
+											<i class="material-icons" style="font-size:36px; color:gray;margin-top:40px;">add_a_photo</i>
+											<p>실 사진 최소 3장이상 등록 하셔야 하며, 가로사진을 권장합니다.</p>
+											<p style="color:red;">불필요한 정보(워터마크,상호,전화번호 등)가 있는 매물은 비공개처리됩니다.</p>
+										</div>
+										<div id="after" style=" border:1px solid black; ">
+											
+											
+											<input type="button" class="addpic" onclick="add();" id="addpic" style="background:#A9A9A9;" value="사진 추가하기">
+											<div style="clear:both;"></div>
+										</div>
+										<div id="file">
+											<input type="button" id="pic_add" class="mdl-button mdl-js-button mdl-button--raised mdl-button--colored" value="사진 추가" style="margin-top:40px;">
+										</div>
+									</div>
+								</td>
+							</tr>
+						</tbody>
+					</table>
+					
+					<!-- -----------------------------------------------------------위 : 바꾼 사진등록-------------------------------------------------- -->
+					
+					<div style="width:500px; border:0px solid black;line-height:20px; margin:0 auto;">
+					 
+						<label class="mdl-checkbox mdl-js-checkbox mdl-js-ripple-effect" for="addRoomCheck">
+							<input type="checkbox" id="addRoomCheck" class="mdl-checkbox__input">
+							<span>매물 관련 규정을 확인하였으며, 입력한 정보는 실제와 다름이 없습니다.</span>
+						</label>
+						 <!-- 
+						<input type="checkbox" id="addRoomCheck" style=""> 
+						<label for="addRoomCheck">매물 관련 규정을 확인하였으며, 입력한 정보는 실제와 다름이 없습니다.</label>
+						 -->
+					</div>
 				<div style="width:220px; margin:0 auto;">					
 					<button class="mdl-button mdl-js-button mdl-button--raised" style="margin-top:40px; margin-right:20px;">등록 취소</button>
 					<button id="complete" class="mdl-button mdl-js-button mdl-button--raised mdl-button--colored" style="margin-top:40px;">매물 등록</button>

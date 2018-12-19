@@ -19,7 +19,8 @@ public class Logout extends HttpServlet {
 		session.removeAttribute("email");
 		session.removeAttribute("seq");
 		session.removeAttribute("kindOf");
-		
+		session.removeAttribute("pw");
+		session.removeAttribute("brokerSeq");
 		resp.sendRedirect(MyURL.main);
 	}
 }

@@ -25,7 +25,7 @@ public class AddRoom extends HttpServlet {
 			PrintWriter writer = resp.getWriter();
 			String txt="<script>";
 			txt+="alert('로그인을 진행해주시기 바랍니다.');";
-			txt+="history.back();";
+			txt+="location.href='/GolaBang/mainpage.do?loginNeed=1';";
 			txt+="</script>";
 			writer.print(txt);
 			writer.close();

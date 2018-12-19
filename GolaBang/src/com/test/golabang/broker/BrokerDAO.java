@@ -51,8 +51,9 @@ public class BrokerDAO {
 			stat.registerOutParameter(22, OracleTypes.NUMBER);
 			
 			stat.executeQuery();
-			return stat.getInt(22);
-			
+			int k = stat.getInt(22);
+			System.out.println(k);
+			return k;			
 		} catch (Exception e) {
 			e.printStackTrace();
 		}

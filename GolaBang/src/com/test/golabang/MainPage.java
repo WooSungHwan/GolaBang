@@ -17,10 +17,17 @@ public class MainPage extends HttpServlet {
 
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws IOException, ServletException {
 		HttpSession session = req.getSession();
+		String loginNeed="";
+		try {
+			loginNeed = req.getParameter("loginNeed");
+		} catch (NullPointerException e) {
+			
+		}
 		
 		if (session.getAttribute("main") == null) {
 			session.setAttribute("main", MyURL.main);
 		}
+		req.setAttribute("loginNeed", loginNeed);
 		RequestDispatcher dispatcher = req.getRequestDispatcher("/WEB-INF/main/mainpage.jsp");
 		dispatcher.forward(req, resp);
 	}

@@ -432,7 +432,9 @@ function openRoom(evt, roomName){
                  
                  <div id="review" class="tabcontent" style="border:0px solid black;">
                     <img src="/GolaBang/images/error2.jpg" style="width:70%;height:70%; display:block; margin:10px auto;"/>
-                    <input type="button" class="mdl-button mdl-js-button mdl-button--raised mdl-button--colored" value="골라방 홈" onclick="location.href='/GolaBang/mainpage.do'"/>
+                    <div style="margin:0 auto; width:95px;">
+	                    <input type="button" class="mdl-button mdl-js-button mdl-button--raised mdl-button--colored" value="골라방 홈" onclick="location.href='/GolaBang/mainpage.do'" />                    
+                    </div>
                  </div>
                  
 		</div>
