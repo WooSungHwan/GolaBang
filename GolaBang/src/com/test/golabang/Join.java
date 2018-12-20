@@ -10,6 +10,14 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+/**
+ * 
+ * @author 송지은
+ * 
+ * 회원가입을 진행하는 클래스 입니다.
+ *
+ */
+
 @WebServlet("/join.do")
 public class Join extends HttpServlet {
 

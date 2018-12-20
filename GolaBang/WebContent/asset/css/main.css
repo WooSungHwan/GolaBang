@@ -1,3 +1,15 @@
+ @font-face { font-family: 'YiSunShinDotumM'; src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_two@1.0/YiSunShinDotumM.woff') format('woff'); font-weight: normal; font-style: normal; }
+
+
+/* @font-face { font-family: '116angmuburi'; src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_six@1.0/116angmuburi.woff') format('woff'); font-weight: normal; font-style: normal; } */
+
+html, body, p, div, table, th, td, ul, ol, dl, li, dt, dd, input, textarea, select, option, field, legend, h1, h2, h3, h4, h5, h6, a {
+   font-family: 'YiSunShinDotumM';
+}
+a.mdl-layout-title{
+	font-family: 'YiSunShinDotumM';
+}
+
 .demo-layout-transparent {
 }
 
@@ -21,5 +33,3 @@ a:hover #joinlogin {
 .demo-layout-transparent .mdl-layout__header {
 	/* background-color: #795549; */
 }
-
-

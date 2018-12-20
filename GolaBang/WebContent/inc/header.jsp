@@ -8,12 +8,12 @@
 	style="border-bottom: 1px solid #eee;">
 	<div class="mdl-layout__header-row">
 		<!-- Title -->
-		<a href='/GolaBang/mainpage.do' class="mdl-layout-title" style="color: black; text-decoration: none;">골라방</a>
+		<a href='/GolaBang/item/itemsearch.do' class="mdl-layout-title" style="color: black; text-decoration: none;">골라방</a>
 		<!-- Add spacer, to align navigation to the right -->
 		<div class="mdl-layout-spacer"></div>
 		<!-- Navigation -->
 		<nav class="mdl-navigation"" >
-			<a class="mdl-navigation__link" href=""
+			<a class="mdl-navigation__link" href="/GolaBang/item/itemsearch.do"
 				style="color: black; font-size: 1.2em; font-weight: bold;">방골라</a>
 			<a class="mdl-navigation__link" href="/GolaBang/tenant/determineroom.do"
 				style="color: black; font-size: 1.2em; font-weight: bold;">관심목록</a>
@@ -21,6 +21,8 @@
 				style="color: black; font-size: 1.2em; font-weight: bold;">방내놓기</a>
 			<a class="mdl-navigation__link" href="/GolaBang/roomregistermain.do"
 				style="color: black; font-size: 1.2em; font-weight: bold;">거래관리</a>
+			<a class="mdl-navigation__link" href="/GolaBang/admin/list.do"
+				style="color: black; font-size: 1.2em; font-weight: bold;">허위매물 게시판</a>
 			<c:if test="${empty email}">
 				<a class="mdl-navigation__link" style="color: #a9a9a9;"><span
 					id="joinlogin">회원가입·로그인</span></a>

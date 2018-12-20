@@ -15,6 +15,14 @@ import org.json.simple.JSONObject;
 import com.test.golabang.broker.BrokerDTO;
 import com.test.golabang.tenant.GeneralDTO;
 
+/**
+ * 
+ * 로그인 상황을 다루는 클래스 입니다.
+ * 
+ * @author 송지은
+ *
+ */
+
 @WebServlet("/login.do")
 public class Login extends HttpServlet {
 
@@ -77,7 +85,7 @@ public class Login extends HttpServlet {
 
 			JSONObject obj = new JSONObject();
 			obj.put("result", result + "");
-
+			System.out.println("result : "+result);
 			PrintWriter writer = resp.getWriter();
 			writer.print(obj);
 			writer.close();

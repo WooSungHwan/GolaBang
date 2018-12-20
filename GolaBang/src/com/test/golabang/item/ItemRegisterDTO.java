@@ -21,8 +21,85 @@ public class ItemRegisterDTO {
 	
 	private String brokerName;
 	
+	private String itemview;
+	private String picture;
+	private String subject;
+	private String content;
+	private String admincost;
+	private String parking;
+	private String pet;
+	private String elevator;
+	private String balcony;
+	private String bultin;
+	private String favorite;
 	
 	
+	public String getItemview() {
+		return itemview;
+	}
+	public void setItemview(String itemview) {
+		this.itemview = itemview;
+	}
+	public String getPicture() {
+		return picture;
+	}
+	public void setPicture(String picture) {
+		this.picture = picture;
+	}
+	public String getSubject() {
+		return subject;
+	}
+	public void setSubject(String subject) {
+		this.subject = subject;
+	}
+	public String getContent() {
+		return content;
+	}
+	public void setContent(String content) {
+		this.content = content;
+	}
+	public String getAdmincost() {
+		return admincost;
+	}
+	public void setAdmincost(String admincost) {
+		this.admincost = admincost;
+	}
+	public String getParking() {
+		return parking;
+	}
+	public void setParking(String parking) {
+		this.parking = parking;
+	}
+	public String getPet() {
+		return pet;
+	}
+	public void setPet(String pet) {
+		this.pet = pet;
+	}
+	public String getElevator() {
+		return elevator;
+	}
+	public void setElevator(String elevator) {
+		this.elevator = elevator;
+	}
+	public String getBalcony() {
+		return balcony;
+	}
+	public void setBalcony(String balcony) {
+		this.balcony = balcony;
+	}
+	public String getBultin() {
+		return bultin;
+	}
+	public void setBultin(String bultin) {
+		this.bultin = bultin;
+	}
+	public String getFavorite() {
+		return favorite;
+	}
+	public void setFavorite(String favorite) {
+		this.favorite = favorite;
+	}
 	public String getBrokerName() {
 		return brokerName;
 	}
@@ -125,15 +202,19 @@ public class ItemRegisterDTO {
 	public void setDealSituation(String dealSituation) {
 		this.dealSituation = dealSituation;
 	}
-	
 	@Override
 	public String toString() {
-		return "itemRegisterDTO [itemSeq=" + itemSeq + ", brokerSeq=" + brokerSeq + ", kind=" + kind + ", address="
+		return "ItemRegisterDTO [itemSeq=" + itemSeq + ", brokerSeq=" + brokerSeq + ", kind=" + kind + ", address="
 				+ address + ", dealkind=" + dealkind + ", supplyArea=" + supplyArea + ", totalFloor=" + totalFloor
 				+ ", floor=" + floor + ", useArea=" + useArea + ", heatingKind=" + heatingKind + ", moveDate="
 				+ moveDate + ", view=" + view + ", registerDate=" + registerDate + ", dealSituation=" + dealSituation
-				+ "]";
+				+ ", deposit=" + deposit + ", monthly=" + monthly + ", brokerName=" + brokerName + ", itemview="
+				+ itemview + ", picture=" + picture + ", subject=" + subject + ", content=" + content + ", admincost="
+				+ admincost + ", parking=" + parking + ", pet=" + pet + ", elevator=" + elevator + ", balcony="
+				+ balcony + ", bultin=" + bultin + ", favorite=" + favorite + "]";
 	}
+	
+	
 	
 	
 	

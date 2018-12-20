@@ -10,8 +10,16 @@ public class DetermineRoomDTO {
 	private String supplyarea;
 	private String admincost;
 	private String subject;
+	private String itemseq;
 	
 	
+	
+	public String getItemseq() {
+		return itemseq;
+	}
+	public void setItemseq(String itemseq) {
+		this.itemseq = itemseq;
+	}
 	public String getKind() {
 		return kind;
 	}

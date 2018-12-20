@@ -14,6 +14,13 @@ import com.test.golabang.item.OptionListDTO;
 
 import oracle.jdbc.driver.OracleTypes;
 
+/**
+ * 
+ * 
+ * @author 송지은
+ *
+ */
+
 public class BrokerDAO {
 	private Connection conn;
 	private PreparedStatement stat ;

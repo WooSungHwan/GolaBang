@@ -9,6 +9,14 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+/**
+ * 
+ * 로그아웃을 진행하는 클래스
+ * 
+ * @author 송지은
+ *
+ */
+
 @WebServlet("/logout.do")
 public class Logout extends HttpServlet {
 

@@ -18,7 +18,7 @@ public class DetermineRoom_Data extends HttpServlet {
 		
 		HttpSession session = req.getSession();
 		
-		String generalSeq = (String)session.getAttribute("generalSeq");
+		String generalSeq = (String)session.getAttribute("seq");
 		
 		String seq1 = req.getParameter("seq1");
 		String seq2 = req.getParameter("seq2");
@@ -27,10 +27,10 @@ public class DetermineRoom_Data extends HttpServlet {
 		
 		//비교
 		DetermineRoomDAO dao = new DetermineRoomDAO();
-		ArrayList<InterestDTO> intlist = dao.interestComp("2015", seq1, seq2);
+		ArrayList<InterestDTO> intlist = dao.interestComp(generalSeq, seq1, seq2);
 		
 		//옵션
-		ArrayList<OptionDTO> optionlist = dao.optionComp("2015", seq1, seq2);
+		ArrayList<OptionDTO> optionlist = dao.optionComp(generalSeq, seq1, seq2);
 		
 		resp.setHeader("Content-type", "application/json");
 		resp.setCharacterEncoding("UTF-8");

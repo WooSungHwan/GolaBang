@@ -4,6 +4,12 @@ import java.sql.*;
 
 import com.test.golabang.DBUtil;
 
+/**
+ * 폐기
+ * @author 송지은
+ *
+ */
+
 public class QuestionDAO {
 
 	Connection conn = null;

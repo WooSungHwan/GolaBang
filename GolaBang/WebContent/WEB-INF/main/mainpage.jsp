@@ -1,4 +1,4 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" errorPage="error.jsp"%>
 <%@ page import="java.net.URLEncoder"%>
 <%@ page import="java.security.SecureRandom"%>
 <%@ page import="java.math.BigInteger"%>
@@ -121,7 +121,7 @@ var loginNeed = "${loginNeed}";
 			</div>
 			
 		<!-- footer -->
-		<jsp:include page="/inc/footer.jsp"></jsp:include>
+		<%-- <jsp:include page="/inc/footer.jsp"></jsp:include> --%>
 
 
 		</main>

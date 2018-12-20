@@ -21,7 +21,7 @@ public class DetermineRoomDAO {
 		
 		try {
 
-			String sql = "select i.kind as kind, i.dealkind as dealkind, i.deposit as deposit, i.monthly as monthly, i.floor as floor, i.supplyarea as supplyarea, a.admincost as admincost, d.subject as subject from tblRecentSearch r inner join tblItemRegister i on r.itemSeq = i.itemSeq inner join tblGeneral g on r.generalSeq = g.generalSeq inner join tblAddInfo a on a.itemSeq = i.itemSeq inner join tblDetailContent d on i.itemSeq = d.itemSeq where r.generalSeq = ?";
+			String sql = "select distinct i.itemseq as itemseq ,i.kind as kind, i.dealkind as dealkind, i.deposit as deposit, i.monthly as monthly, i.floor as floor, i.supplyarea as supplyarea, a.admincost as admincost, d.subject as subject from tblRecentSearch r inner join tblItemRegister i on r.itemSeq = i.itemSeq inner join tblGeneral g on r.generalSeq = g.generalSeq inner join tblAddInfo a on a.itemSeq = i.itemSeq inner join tblDetailContent d on i.itemSeq = d.itemSeq where r.generalSeq = ?";
 
 			stat = conn.prepareStatement(sql);
 			stat.setString(1, generalSeq);
@@ -34,6 +34,8 @@ public class DetermineRoomDAO {
 				
 				DetermineRoomDTO dto = new DetermineRoomDTO();
 				
+				
+				dto.setItemseq(rs.getString("itemseq"));
 				dto.setKind(rs.getString("kind"));
 				dto.setDealkind(rs.getString("dealkind"));
 				dto.setDeposit(rs.getString("deposit"));

@@ -1,6 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-<div style="margin-top:100px;"></div>
 <footer class="mdl-mega-footer">
   <div class="mdl-mega-footer__middle-section">
 

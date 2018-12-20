@@ -9,7 +9,14 @@ public class FakeItemBoardDTO {
 	private String content;
 	private String type;
 	private String regdate;
+	private String readcount;
 	
+	public String getReadcount() {
+		return readcount;
+	}
+	public void setReadcount(String readcount) {
+		this.readcount = readcount;
+	}
 	public String getFakeItemBoardSeq() {
 		return fakeItemBoardSeq;
 	}
@@ -53,12 +60,15 @@ public class FakeItemBoardDTO {
 		this.regdate = regdate;
 	}
 	
-	
 	@Override
 	public String toString() {
 		return "FakeItemBoardDTO [fakeItemBoardSeq=" + fakeItemBoardSeq + ", generalSeq=" + generalSeq + ", itemSeq="
 				+ itemSeq + ", title=" + title + ", content=" + content + ", type=" + type + ", regdate=" + regdate
-				+ "]";
+				+ ", readcount=" + readcount + "]";
 	}
+
+	
+	
+	
 	
 }

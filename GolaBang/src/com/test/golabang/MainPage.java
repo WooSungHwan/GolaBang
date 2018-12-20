@@ -12,6 +12,14 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+/**
+ * 메인화면을 구성하는 클래스
+ * 
+ * @author 송지은
+ *
+ */
+
+
 @WebServlet("/mainpage.do")
 public class MainPage extends HttpServlet {
 
@@ -23,12 +31,12 @@ public class MainPage extends HttpServlet {
 		} catch (NullPointerException e) {
 			
 		}
-		
 		if (session.getAttribute("main") == null) {
 			session.setAttribute("main", MyURL.main);
 		}
 		req.setAttribute("loginNeed", loginNeed);
-		RequestDispatcher dispatcher = req.getRequestDispatcher("/WEB-INF/main/mainpage.jsp");
-		dispatcher.forward(req, resp);
+		/*RequestDispatcher dispatcher = req.getRequestDispatcher("/WEB-INF/main/mainpage.jsp");
+		dispatcher.forward(req, resp);*/
+		resp.sendRedirect("/GolaBang/item/itemsearch.do");
 	}
 }

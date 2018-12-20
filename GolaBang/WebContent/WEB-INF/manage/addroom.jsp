@@ -1,4 +1,4 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" errorPage="error.jsp"%>
 <%@ page import="java.net.URLEncoder"%>
 <%@ page import="java.security.SecureRandom"%>
 <%@ page import="java.math.BigInteger"%>
@@ -6,7 +6,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Title</title>
+<title>골라방 - 매물 등록하기</title>
 <script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=6044ed3fb1b6ba23f4fd59f7a2dfbb1f&libraries=services"></script>
 <script src="http://dmaps.daum.net/map_js_init/postcode.v2.js"></script>
 <%@ include file="/inc/asset.jsp"%>
@@ -1271,7 +1271,7 @@ var detail_privatememo = document.getElementById("detail_privatememo"); //상세
 			</div>
 			
 		<!-- footer -->
-		<jsp:include page="/inc/footer.jsp"></jsp:include>
+		<%-- <jsp:include page="/inc/footer.jsp"></jsp:include> --%>
 
 
 		</main>

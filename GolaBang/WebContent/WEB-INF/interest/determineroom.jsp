@@ -1,11 +1,11 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-	pageEncoding="UTF-8"%>
+	pageEncoding="UTF-8" errorPage="error.jsp" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <!DOCTYPE html>
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Title</title>
+<title>골라방</title>
 <%@ include file="/inc/asset.jsp"%>
 <link rel="stylesheet"
 	href="https://fonts.googleapis.com/icon?family=Material+Icons">
@@ -66,7 +66,7 @@ i {
 
 .tab button:hover {
 	color: black;
-	border-bottom: 2px solid black;
+/* 	border-bottom: 2px solid black; */
 }
 
 .tab button.active {
@@ -262,11 +262,6 @@ label {
 		$("div#real input[type=checkbox]").change(function() { //체크박스 2개 체크 확인여부 
 			
 			var cnt = 2;
-	
-		
-
-			
-			alert($("div#real input[type=checkbox]:checked").length);
 			if (cnt == $("div#real input[type=checkbox]:checked").length) {
 				$("div#real input[type=checkbox]:not(:checked)").attr("disabled", "disabled");
 				$("#btnComp").attr("disabled",false);
@@ -342,7 +337,7 @@ label {
 					
 					var tr = "";	
 					
-					tr = "<tr><th class='compTable_th mdl-data-table__cell--non-numeric'></th><td style='text-align: center; font-weight: bold; color: brown;'>" + result[0][0].registerdate +"</td><td style='text-align: center; font-weight: bold; color: brown;'>" + result[0][1].registerdate +"</td></tr><tr><th class='compTable_th mdl-data-table__cell--non-numeric'>매물</th><td><img src='/GolaBang/images/golabang3.jpg'></td><td><img src='/GolaBang/images/golabang4.JPG'></td></tr><tr><th class='compTable_th mdl-data-table__cell--non-numeric'>건물유형</th><td>" + result[0][0].kind + "</td><td>" + result[0][1].kind + "</td></tr><tr><th class='compTable_th mdl-data-table__cell--non-numeric'>보증금/월세</th><td>" + result[0][0].deposit + "/" + result[0][0].monthly + "</td><td>" + result[0][1].deposit + "/" + result[0][1].monthly + "</td></tr><tr><th class='compTable_th mdl-data-table__cell--non-numeric'>전용면적</th><td>" + result[0][0].supplyarea + "㎡</td><td>" + result[0][1].supplyarea + "㎡</td></tr>";
+					tr = "<tr><th class='compTable_th mdl-data-table__cell--non-numeric'></th><td style='text-align: center; font-weight: bold; color: brown;'>" + result[0][0].registerdate +"</td><td style='text-align: center; font-weight: bold; color: brown;'>" + result[0][1].registerdate +"</td></tr><tr><th class='compTable_th mdl-data-table__cell--non-numeric'>매물</th><td><img src='/GolaBang/images/golabang3.jpg'></td><td><img src='/GolaBang/images/golabang4.jpg'></td></tr><tr><th class='compTable_th mdl-data-table__cell--non-numeric'>건물유형</th><td>" + result[0][0].kind + "</td><td>" + result[0][1].kind + "</td></tr><tr><th class='compTable_th mdl-data-table__cell--non-numeric'>보증금/월세</th><td>" + result[0][0].deposit + "/" + result[0][0].monthly + "</td><td>" + result[0][1].deposit + "/" + result[0][1].monthly + "</td></tr><tr><th class='compTable_th mdl-data-table__cell--non-numeric'>전용면적</th><td>" + result[0][0].supplyarea + "㎡</td><td>" + result[0][1].supplyarea + "㎡</td></tr>";
 						
 						
 					$("#compdiv").append(tr);
@@ -469,7 +464,7 @@ label {
 							<span class="notice" id="notice_right">최근 본 방은 최대 50개까지 저장됩니다.</span>
 					</div>
 					<c:forEach items="${list}" var="dto">
-						<div style="border: 0px solid #9E9E9E; margin-top: 10px;" id="real">
+						<div style="border: 0px solid #9E9E9E; margin-top: 10px;" id="real" onclick="location.href='/GolaBang/item/itemlocation.do?itemseq=${dto.itemseq}'">
 							<!-- border 지울것 -->
 							<div id="picture"
 								style="border: 0px solid blue; margin-top: 10px; padding: 0px;">
@@ -597,7 +592,7 @@ label {
 
 
 		<!-- footer -->
-		<jsp:include page="/inc/footer.jsp"></jsp:include>
+		<%-- <jsp:include page="/inc/footer.jsp"></jsp:include> --%>
 
 	</div>
 </body>

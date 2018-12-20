@@ -1,5 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-	pageEncoding="UTF-8"%><%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+	pageEncoding="UTF-8" errorPage="error.jsp"%><%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 	<%@ page import="java.net.URLEncoder"%>
 <%@ page import="java.security.SecureRandom"%>
 <%@ page import="java.math.BigInteger"%>
@@ -7,7 +7,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Title</title>
+<title>골라방 - 마이페이지</title>
 <%@ include file="/inc/asset.jsp"%>
 
 <style>
@@ -439,7 +439,7 @@ function openRoom(evt, roomName){
                  
 		</div>
 		<!-- footer -->
-		<jsp:include page="/inc/footer.jsp"></jsp:include>
+		<%-- <jsp:include page="/inc/footer.jsp"></jsp:include> --%>
 		</main>
 	</div>
 </body>

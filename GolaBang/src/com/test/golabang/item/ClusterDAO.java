@@ -21,8 +21,8 @@ public class ClusterDAO {
       
       try {
 
-         String sql = "select address from tblItemRegister";
-
+         
+         String sql = "select address from vwItemInfo where 1 = 1  and kind in('원룸') and dealkind in('월세')";
          stat = conn.prepareStatement(sql);
          rs = stat.executeQuery();
          ArrayList<String> list = new ArrayList<String>();

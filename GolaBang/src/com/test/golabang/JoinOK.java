@@ -13,6 +13,14 @@ import org.json.simple.JSONObject;
 
 import com.test.golabang.tenant.GeneralDTO;
 
+/**
+ * 
+ * 회원가입을 할 때 데이터를 추가하는 클래스입니다.
+ * 
+ * @author 송지은
+ *
+ */
+
 @WebServlet("/joinok.do")
 public class JoinOK extends HttpServlet {
 

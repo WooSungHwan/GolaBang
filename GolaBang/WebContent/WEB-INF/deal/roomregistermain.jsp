@@ -1,11 +1,11 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-   pageEncoding="UTF-8"%>
+   pageEncoding="UTF-8" errorPage="error.jsp" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <!DOCTYPE html>
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Title</title>
+<title>골라방</title>
 <%@ include file="/inc/asset.jsp"%>
 <link rel="stylesheet"
    href="https://fonts.googleapis.com/icon?family=Material+Icons">
@@ -374,7 +374,7 @@ dialog>.modalTitles>h5 {
              
              $("#content" + itemSeq).text(result.content);
              
-             var img = '/GolaBang/images/' + result.picture;
+             var img = '/GolaBang/picture/' + result.picture;
              
              $("#modalPic" + itemSeq).attr('src', img);
       },
@@ -400,7 +400,7 @@ dialog>.modalTitles>h5 {
 
       <div>
          <div id="title">
-            <h2>방 내놓기</h2>
+            <h2>내 방 관리</h2>
          </div>
          <div id="interest_big">
             <div class="tab">
@@ -445,7 +445,7 @@ dialog>.modalTitles>h5 {
                          <c:forEach items="${brokerItemList}" var="brokerItemList">
                         <div class="demo-card-square mdl-card mdl-shadow--2dp myRoomManage" style="float:left;">
                            <c:if test="${brokerItemList.itemPicture != null}">
-                           <div class="" style="height: 200px; background: url('/GolaBang/images/${brokerItemList.itemPicture}') bottom right 15% no-repeat #46B6AC;">
+                           <div class="" style="height: 200px; background: url('/GolaBang/picture/${brokerItemList.itemPicture}') bottom right 15% no-repeat #46B6AC;">
                            </c:if>
                            
                            <c:if test="${brokerItemList.itemPicture == null}">
@@ -467,8 +467,7 @@ dialog>.modalTitles>h5 {
                               ${brokerItemList.itemClosedNote}
                            </div>
                            <div class="mdl-card__actions mdl-card--border">
-                              <a
-                                 class="mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect">
+                              <a class="mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect">
                                  더보기 </a>
                               <a
                                  class="mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect" style="float: right;" id="btnDelItem" onclick="delItem(${brokerItemList.itemSeq});">
@@ -543,7 +542,7 @@ dialog>.modalTitles>h5 {
                                     </div>
                                  </div>
                                  <div style="width: 140px; margin-right: 10px;">
-                                    <img src="/GolaBang/images/${dealItemList.picture}" class="thumbnails">
+                                    <img src="/GolaBang/picture/${dealItemList.picture}" class="thumbnails">
                                  </div>
                                  <div style="clear: both;"></div>
                                  <div style="width: 338px; border-top: 1px solid #E0E0E0; margin-top: 7px; padding-top: 7px; text-align: center;">
@@ -617,7 +616,7 @@ dialog>.modalTitles>h5 {
       </div>
 
 
-      <jsp:include page="/inc/footer.jsp"></jsp:include> </main>
+      <%-- <jsp:include page="/inc/footer.jsp"></jsp:include> --%> </main>
 
       
       <c:forEach items="${dealItemList}" var="dealItemList">

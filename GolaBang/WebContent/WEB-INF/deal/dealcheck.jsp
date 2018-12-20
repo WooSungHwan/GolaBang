@@ -1,6 +1,6 @@
 
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
+    pageEncoding="UTF-8" errorPage="error.jsp"%>
 
 <!DOCTYPE html>
 <html>
@@ -8,17 +8,8 @@
 <meta charset="UTF-8">
 <title>골라방</title>
 
-    
-<link rel="stylesheet" href="https://code.getmdl.io/1.3.0/material.brown-orange.min.css" />
-<link rel="stylesheet" href="/GolaBang/asset/css/main.css">
-<script src="/GolaBang/asset/js/jquery-1.12.4.js"></script>
-<script src="/GolaBang/asset/js/main.js"></script>
-
-
-
-
-<link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
-<script defer src="https://code.getmdl.io/1.3.0/material.min.js"></script>
+   
+<%@include file="/inc/asset.jsp" %>
 <style>
 @font-face { font-family: 'designhouseOTFLight00'; src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_three@1.0/designhouseOTFLight00.woff') format('woff'); font-weight: normal; font-style: normal; }
 
@@ -421,7 +412,7 @@ dialog > .modalTitles > h5 {
          </div> <!-- 내용 box -->
       </div>
 
-		<jsp:include page="/inc/footer.jsp"></jsp:include>
+		<%-- <jsp:include page="/inc/footer.jsp"></jsp:include> --%>
 
       </main>
 

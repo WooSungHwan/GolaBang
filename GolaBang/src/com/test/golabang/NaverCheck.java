@@ -19,6 +19,13 @@ import org.json.simple.parser.JSONParser;
 import com.test.golabang.broker.BrokerDTO;
 import com.test.golabang.tenant.GeneralDTO;
 
+/**
+ * 네이버 로그인 인증을 처리하는 서블릿 클래스
+ * 
+ * @author 송지은
+ *
+ */
+
 @WebServlet("/navercheck.do")
 public class NaverCheck extends HttpServlet {
 

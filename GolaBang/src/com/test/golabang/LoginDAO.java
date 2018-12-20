@@ -11,6 +11,14 @@ import com.test.golabang.broker.BrokerDTO;
 import com.test.golabang.item.ItemRegisterDTO;
 import com.test.golabang.tenant.GeneralDTO;
 
+/**
+ * 
+ * @author 송지은
+ * 
+ * 로그인 상황과 관련된 데이터를 불러오는 클래스입니다.
+ *
+ */
+
 public class LoginDAO {
 	
 	private Connection conn;
@@ -19,6 +27,16 @@ public class LoginDAO {
 		conn= DBUtil.getConnection();
 	}
 
+
+	/**
+	 * 로그인 정보를 입력했을 때 데이터베이스와 정보가 일치하는지 확인하는 메소드
+	 * 
+	 * @param email
+	 * @param pw
+	 * @return email과 pw가 일치하는 수
+	 */
+	
+	
 	public int loginCheck(String email, String pw) {
 		String sql ="select count(*) as cnt from vwtenantinfo where email = ? and tenantpw = ?";
 		try {
@@ -44,6 +62,14 @@ public class LoginDAO {
 		}
 	}
 
+	/**
+	 * 
+	 * 입력한 email이 데이터베이스의 email과 동일한 사람의 정보를 가져오는 메소드
+	 * 
+	 * @param email
+	 * @return email이 입력값과 동일한 정보
+	 */
+	
 	public GeneralDTO getGeneral(String email) {
 		String sql ="select * from tblGeneral where email = ?";
 		
@@ -66,6 +92,13 @@ public class LoginDAO {
 		return null;
 	}
 
+	/**
+	 * 회원가입이 되어있는지의 여부를 확인하는 메소드
+	 * 
+	 * @param email
+	 * @return true/false
+	 */
+	
 	public boolean joinCheck(String email) {
 		String sql = "select count(*) as cnt from tblGeneral where email = ?";
 		try {
@@ -84,6 +117,13 @@ public class LoginDAO {
 		return false;
 	}
 
+	/**
+	 * 회원을 추가하는 메소드
+	 * 
+	 * @param dto
+	 */
+
+	
 	public void addGeneral(GeneralDTO dto) {
 		String sql="{call procInsNaver(?,?,?)}";
 		try {

@@ -19,15 +19,15 @@ public class DetermineRoom extends HttpServlet {
 
 		HttpSession session = req.getSession();
 		
-		String generalSeq = (String)session.getAttribute("generalSeq");
+		String generalSeq = (String)session.getAttribute("seq");
 
 		DetermineRoomDAO dao = new DetermineRoomDAO();
 		
-		ArrayList<DetermineRoomDTO> list = dao.list("21"); // "21" ->나중에 generalSeq로 바꾸기
+		ArrayList<DetermineRoomDTO> list = dao.list(generalSeq); // "21" ->나중에 generalSeq로 바꾸기
 
 		req.setAttribute("list", list);
 		
-		ArrayList<InterestDTO> interest = dao.interest("2015"); // "2015" ->나중에 generalSeq로 바꾸기
+		ArrayList<InterestDTO> interest = dao.interest(generalSeq); // "2015" ->나중에 generalSeq로 바꾸기
 		
 //		req.setAttribute("interest", interest);
 		req.setAttribute("interest", interest); //세션에 DTO 추가함
