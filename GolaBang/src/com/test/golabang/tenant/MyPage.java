@@ -14,6 +14,12 @@ import javax.servlet.http.HttpSession;
 import com.test.golabang.LoginDAO;
 import com.test.golabang.item.ItemRegisterDTO;
 
+/**
+ * 마이페이지를 담당하는 서블릿 클래스
+ * 
+ * @author 송지은
+ *
+ */
 
 @WebServlet("/mypage.do")
 public class MyPage extends HttpServlet {

@@ -13,6 +13,13 @@ import com.test.golabang.item.BrokerItemListDTO;
 
 import oracle.jdbc.OracleTypes;
 
+/**
+ * 거래 데이터를 담당하는 클래스
+ * 
+ * @author 송지은
+ *
+ */
+
 public class DealDAO {
 
    Connection conn = null;
@@ -22,6 +29,13 @@ public class DealDAO {
    public DealDAO() {
       this.conn = DBUtil.getConnection();
    }
+   
+   /**
+    * 거래 아이템을 담당하는 데이터 메소드
+    * 
+    * @param seq
+    * @return list
+    */
 
    public ArrayList<DealItemListDTO> dealItemListBro(String seq) {
       
@@ -76,6 +90,11 @@ public class DealDAO {
       return null;
    }
    
+   /**
+    * 
+    * @param dto
+    * @return list
+    */
    
    public ArrayList<DealItemListDTO> dealItemListTen(DealItemListDTO dto) {
 	   
@@ -140,6 +159,12 @@ public class DealDAO {
       }
    }
 
+   /**
+    * 세입자와 중개자와의 거래 데이터를 담당하는 데이터 메소드
+    * @param dealSeq
+    * @return obj
+    */
+   
    @SuppressWarnings("unchecked")
    public JSONObject dealBrokerTenant(String dealSeq) {
 
@@ -181,6 +206,14 @@ public class DealDAO {
       return null;
    }
 
+   /**
+    * 
+    * 계약 상세 데이터를 담당하는 메소드
+    * 
+    * @param dealSeq
+    * @return obj
+    */
+   
 	@SuppressWarnings("unchecked")
 	public JSONObject dealContractDetail(String dealSeq) {
 	
@@ -220,6 +253,13 @@ public class DealDAO {
 		
 		return null;
 	}
+	
+	/**
+	 * 계약 데이터를 삽입하는 데이터 메소드
+	 * 
+	 * @param dealSeq
+	 * @param seq
+	 */
 
 	public void insertTblContract(String dealSeq, String seq) {
 
@@ -238,6 +278,14 @@ public class DealDAO {
 		
 	}
 
+	/**
+	 * 
+	 * 계약 데이터를 담당하는 데이터 메소드
+	 * 
+	 * @param dealSeq
+	 * @return obj
+	 */
+	
 	@SuppressWarnings("unchecked")
 	public JSONObject tblContract(String dealSeq) {
 
@@ -267,6 +315,14 @@ public class DealDAO {
 		return null;
 	}
 
+	/**
+	 * 
+	 * 중개자 아이템 데이터를 담당하는 데이터 메소드
+	 * 
+	 * @param seq
+	 * @return list
+	 */
+	
 	public ArrayList<BrokerItemListDTO> brokerItemList(String seq) {
 
 		try {
@@ -308,6 +364,14 @@ public class DealDAO {
 		return null;
 	}
 
+	/**
+	 * 
+	 * 아이템을 삭제하는 데이터 메소드
+	 * 
+	 * @param itemSeq
+	 * @return result
+	 */
+	
 	public int deleteItem(String itemSeq) {
 		
 		try { //procDelBrokerItem

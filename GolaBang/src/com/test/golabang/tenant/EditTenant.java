@@ -12,6 +12,14 @@ import javax.servlet.http.HttpSession;
 
 import org.json.simple.JSONObject;
 
+/**
+ * 
+ * 세입자 관련 수정을 담당하는 서블릿 클래스
+ * 
+ * @author 송지은
+ *
+ */
+
 @WebServlet("/edittenant.do")
 public class EditTenant extends HttpServlet {
 

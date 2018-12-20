@@ -10,6 +10,13 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+/**
+ * 계약확인을 하는 서블릿 클래스
+ * 
+ * @author 송지은
+ *
+ */
+
 @WebServlet("/checkcontract.do")
 public class CheckContract extends HttpServlet {
 

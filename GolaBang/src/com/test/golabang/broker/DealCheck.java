@@ -13,6 +13,14 @@ import javax.servlet.http.HttpSession;
 
 import org.json.simple.JSONObject;
 
+/**
+ * 
+ * 거래를 확인하는 서블릿 클래스
+ * 
+ * @author 송지은
+ *
+ */
+
 @WebServlet("/dealcheck.do")
 public class DealCheck extends HttpServlet {
 

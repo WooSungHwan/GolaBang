@@ -11,6 +11,13 @@ import javax.servlet.http.HttpServletResponse;
 
 import org.json.simple.JSONObject;
 
+/**
+ * 계약 세부 내용을 담당하는 서블릿 클래스
+ * 
+ * @author 송지은
+ *
+ */
+
 @WebServlet("/dealcontractdetail.do")
 public class DealContractDetail extends HttpServlet {
 

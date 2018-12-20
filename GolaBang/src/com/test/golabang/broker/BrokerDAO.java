@@ -15,7 +15,7 @@ import com.test.golabang.item.OptionListDTO;
 import oracle.jdbc.driver.OracleTypes;
 
 /**
- * 
+ * 중개자 관련 데이터 클래스
  * 
  * @author 송지은
  *
@@ -30,6 +30,16 @@ public class BrokerDAO {
 		this.conn=DBUtil.getConnection();
 	}
 
+	/**
+	 * 
+	 * 중개자가 방을 추가할 때 사용하는 데이터 메소드
+	 * 
+	 * @param itemDTO
+	 * @param dDTO
+	 * @param aDTO
+	 * @return k
+	 */
+	
 	public int AddRoom(ItemRegisterDTO itemDTO, DetailContentDTO dDTO, AddInfoDTO aDTO) {
 		String sql ="{call procInsNewItemRegister(?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)}";
 		try {
@@ -68,6 +78,14 @@ public class BrokerDAO {
 		return 0;
 	}
 
+	/**
+	 * 
+	 * 중개자가 옵션을 추가하는 데이터 메소드
+	 * 
+	 * @param oDTO
+	 * @return stat.executeUpdate();
+	 */
+	
 	public int AddOption(OptionListDTO oDTO) {
 		String sql  ="insert into tblOptionList values(optionseq.nextval,?,?,?,?)";
 		try {
@@ -83,6 +101,15 @@ public class BrokerDAO {
 		return 0;
 	}
 
+	/**
+	 * 
+	 * 사진을 추가하는 메소드
+	 * 
+	 * @param pictureName
+	 * @param itemSeq
+	 * @return stat.executeUpdate();
+	 */
+	
 	public int AddPicture(String pictureName, String itemSeq) {
 		String sql = "insert into tblPicture values(pictureSeq.nextval,?,?)";
 		try {

@@ -9,6 +9,12 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+/**
+ * 수정을 담당하는 클래스
+ * @author 송지은
+ *
+ */
+
 @WebServlet("/mypage/editinfo.do")
 public class EditInfo extends HttpServlet {
 

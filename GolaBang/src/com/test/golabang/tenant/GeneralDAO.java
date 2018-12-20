@@ -7,6 +7,12 @@ import java.util.concurrent.Callable;
 
 import com.test.golabang.DBUtil;
 
+/**
+ * 계정 관련 데이터를 가져오는 클래스
+ * @author 송지은
+ *
+ */
+
 public class GeneralDAO {
 	private Connection conn;
 	private PreparedStatement stat ;
@@ -16,6 +22,13 @@ public class GeneralDAO {
 		this.conn=DBUtil.getConnection();
 	}
 
+	/**
+	 * 전화번호를 가져오는 데이터 메소드
+	 * 
+	 * @param seq
+	 * @return dto
+	 */
+	
 	public TenantDTO getTel(String seq) {
 		String sql = "select mobiletel,tenantpw from tblTenant where generalSeq=?";
 		try {
@@ -34,6 +47,13 @@ public class GeneralDAO {
 		return null;
 	}
 
+	/**
+	 * 세입자 정보를 수정하는 데이터 메소드
+	 * 
+	 * @param dto
+	 * @return 0/1
+	 */
+	
 	public int editTenantInfo(GeneralDTO dto) {
 		String sql = "{call procEditTenantInfo(?,?,?)}";
 		try {

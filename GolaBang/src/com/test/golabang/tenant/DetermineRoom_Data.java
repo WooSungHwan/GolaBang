@@ -10,6 +10,14 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+/**
+ * 
+ * 관심목록 방 데이터를 관리하는 서블릿 클래스
+ * 
+ * @author 송지은
+ *
+ */
+
 @WebServlet("/tenant/determineroom_data.do")
 public class DetermineRoom_Data extends HttpServlet {
 

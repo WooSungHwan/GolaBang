@@ -7,6 +7,13 @@ import java.util.ArrayList;
 
 import com.test.golabang.DBUtil;
 
+/**
+ * 관심목록 관련 데이터를 관리하는 데이터 클래스
+ * 
+ * @author 송지은
+ *
+ */
+
 public class DetermineRoomDAO {
 	
 	private Connection conn = null;
@@ -17,6 +24,13 @@ public class DetermineRoomDAO {
 		this.conn = DBUtil.getConnection();
 	}
 
+	/**
+	 * 관심목록 방 목록을 가져오는 데이터 메소드
+	 * 
+	 * @param generalSeq
+	 * @return list
+	 */
+	
 	public ArrayList<DetermineRoomDTO> list(String generalSeq) { //OK
 		
 		try {
@@ -62,6 +76,13 @@ public class DetermineRoomDAO {
 		return null;
 	}
 
+	/**
+	 * 찜한 방 목록을 가져오는 데이터 메소드
+	 * 
+	 * @param generalSeq
+	 * @return list
+	 */
+	
 	public ArrayList<InterestDTO> interest(String generalSeq) {
 		
 		try {
@@ -103,6 +124,15 @@ public class DetermineRoomDAO {
 		return null;
 	}
 
+	/**
+	 * 찜한 방 데이터를 가져오는 데이터 메소드
+	 * 
+	 * @param generalSeq
+	 * @param seq1
+	 * @param seq2
+	 * @return list
+	 */
+	
 	public ArrayList<InterestDTO> interestComp(String generalSeq, String seq1, String seq2) {
 
 		try {
@@ -147,6 +177,16 @@ public class DetermineRoomDAO {
 		return null;
 	}
 
+	/**
+	 * 
+	 * 비교 데이터를 가져오는 데이터 메소드
+	 * 
+	 * @param generalSeq
+	 * @param seq1
+	 * @param seq2
+	 * @return list
+	 */
+	
 	public ArrayList<OptionDTO> optionComp(String generalSeq, String seq1, String seq2) {
 		
 		try {

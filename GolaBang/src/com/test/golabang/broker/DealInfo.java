@@ -12,6 +12,13 @@ import javax.servlet.http.HttpSession;
 
 import org.json.simple.JSONObject;
 
+/**
+ * 
+ * 거래정보 데이터를 담당하는 데이터 메소드
+ * 
+ * @author 송지은
+ *
+ */
 @WebServlet("/dealinfo.do")
 public class DealInfo extends HttpServlet {
 
