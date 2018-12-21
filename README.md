@@ -43,3 +43,18 @@
 
 ## Exerd 테이블 명세
 ![Alt Text](https://github.com/WooSungHwan/GolaBang/blob/master/erd.png)
+
+## 구동 화면
+* 골라방 메인화면<br><br>
+![Alt text](https://github.com/WooSungHwan/GolaBang/blob/master/8.%20%ED%99%94%EB%A9%B4%20%EC%BA%A1%EC%B3%90/01.%EB%A1%9C%EA%B7%B8%EC%9D%B8%2C%ED%9A%8C%EC%9B%90%EA%B0%80%EC%9E%85%20%EB%B0%8F%20%EB%A9%94%EC%9D%B8%EB%A9%94%EB%89%B4/1-1.%EB%A9%94%EC%9D%B8%ED%99%94%EB%A9%B4.jpg)
+* 방 검색<br><br>
+![Alt text](https://github.com/WooSungHwan/GolaBang/blob/master/8.%20%ED%99%94%EB%A9%B4%20%EC%BA%A1%EC%B3%90/02.%EB%B0%A9%20%EC%B0%BE%EA%B8%B0/1-2.%EB%B0%A9%20%EA%B2%80%EC%83%89.jpg)
+* 방 비교하기<br><br>
+![Alt text](https://github.com/WooSungHwan/GolaBang/blob/master/8.%20%ED%99%94%EB%A9%B4%20%EC%BA%A1%EC%B3%90/03.%EA%B4%80%EC%8B%AC%EB%AA%A9%EB%A1%9D/3.%EB%B0%A9%20%EB%B9%84%EA%B5%90%ED%95%98%EA%B8%B0.jpg)
+* 방 등록하기<br><br>
+![Alt text](https://github.com/WooSungHwan/GolaBang/blob/master/8.%20%ED%99%94%EB%A9%B4%20%EC%BA%A1%EC%B3%90/04.%EB%B0%A9%20%EB%82%B4%EB%86%93%EA%B8%B0/1.%EB%B0%A9%20%EB%82%B4%EB%86%93%EA%B8%B0.jpg)
+* 계약서<br><br>
+![Alt text](https://github.com/WooSungHwan/GolaBang/blob/master/8.%20%ED%99%94%EB%A9%B4%20%EC%BA%A1%EC%B3%90/05.%EA%B1%B0%EB%9E%98%20%EA%B4%80%EB%A6%AC/2-3.%EA%B1%B0%EB%9E%98%20%EC%A7%84%ED%96%89%EC%83%81%ED%99%A9(%EA%B3%84%EC%95%BD%EC%84%9C).jpg)
+* 방 정보 보기<br><br>
+![Alt text]
+(https://github.com/WooSungHwan/GolaBang/blob/master/8.%20%ED%99%94%EB%A9%B4%20%EC%BA%A1%EC%B3%90/06.%EB%A7%A4%EB%AC%BC%20%EC%A0%95%EB%B3%B4/1.%EB%A7%A4%EB%AC%BC%EC%A0%95%EB%B3%B4.jpg)
