@@ -42,3 +42,4 @@
 </pre>
 
 ## Exerd 테이블 명세
+![Alt Text](https://github.com/WooSungHwan/GolaBang/blob/master/erd.png)
